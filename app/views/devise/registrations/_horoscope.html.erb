@@ -1,0 +1,47 @@
+                <h2 class="fs-title"><%= t('labels.step_four')%></h2>
+                <h3 class="fs-subtitle"><%= t('labels.interest_info')%></h3>
+                 <div class="form-group">
+                    <div class="row">
+                        <div class="">
+                            <h4>
+                                <lable for="gender"><%= t('labels.manglik')%>
+                                    <i>*</i>
+                                </lable>
+                                </h4>
+                                <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-manglik" type="radio" value="true" name="profile[is_manglik]" id="profile_manglik_yes">
+                                <label class="form-check-label" for="inlineRadio1"><%= t('label.yes')%></label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-manglik" type="radio" value="false" name="profile[is_manglik]" id="profile_manglik_no"> 
+                                <label class="form-check-label" for="inlineRadio2"><%= t('label.no')%></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <h4>
+                            <lable for="tob"><%= profile.label :time_of_birth, class:'label blk'%> 
+                            </lable>
+                            </h4>
+                            <input type="text" class="form-control" id="time_of_birth" placeholder="HH:MM">
+                            <small id="" class="form-text text-muted"><%= t('labels.tob_msg')%></small>
+                    </div>
+                </div>
+              
+                 <div class="row">
+                    <div class="form-group">
+                        <h4>
+                            <lable for="sun_sign"><%= profile.label :sun_sign, class:'label blk'%> 
+                            </lable>
+                            </h4>
+                            <input type="text" class="form-control" id="sun_sign" placeholder="Sun Sign">
+                            <small id="" class="form-text text-muted"><%= t('labels.sunsign_msg')%> </small>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />

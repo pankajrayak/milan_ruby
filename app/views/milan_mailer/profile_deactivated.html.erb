@@ -1,0 +1,11 @@
+
+<p> <%= I18n.t 'milan.dear' , name: @user.first_name   %></p> 
+
+<p><%=  @performed_by=='MEMBER'? (I18n.t 'milan.msg.deactivated_user') : (I18n.t 'milan.msg.deactivated_admin') %>
+<br/>
+<%= I18n.t 'milan.good_luck' %>
+</p>
+
+<p><%= I18n.t 'milan.thanks' %>!<br/>
+<%= I18n.t 'milan.team' %></p>
+

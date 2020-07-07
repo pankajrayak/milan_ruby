@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  initiated_by: 
+  approved_by: 
+  created_at: 2018-05-06
+  updated_at: 2018-05-06
+  status: MyString
+  type: 
+  comment: MyText
+  user: one
+
+two:
+  initiated_by: 
+  approved_by: 
+  created_at: 2018-05-06
+  updated_at: 2018-05-06
+  status: MyString
+  type: 
+  comment: MyText
+  user: two

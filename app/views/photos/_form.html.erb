@@ -1,0 +1,36 @@
+<%= form_for User.new, :url => {:controller => "photos", :action => "create"} do |f| %>
+                  <div class="row">
+                    <div class="form-group">
+                        <div class="row no-padding">
+                            <h4>
+                                <lable >Upload Your Photos
+                                    <i>*</i>
+                                </lable>
+                                </h4>
+                        </div>
+                        <div class="row no-padding">
+                            <div class="row no-padding">
+                                <h4>
+                                    <lable >Headshot Photo</lable>
+                                    </h4>
+                            </div>
+                            <div class="col-md-12">
+                                 <%= f.file_field :head, :multiple => false %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row no-padding">
+                                <h4>
+                                    <lable >Full Length Body Shot</lable>
+                                    </h4>
+                            </div>
+                            <div class="col-md-12">
+                                <%= f.file_field :full_length, :multiple => false %>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+  <div class="actions">
+    <%= f.submit "Upload"%>
+  </div>
+  <% end %>

@@ -1,0 +1,328 @@
+
+.main .pop-msg{
+    position: absolute;
+    width: 34%;
+    right: 6px;
+    z-index: 21;
+    opacity: 0;
+    transition: opacity 2.5s linear;
+}
+
+.modal-dialog {
+    background: #e1e1e1;
+    margin: 0 auto;
+    width: 300px;
+    position: relative;
+    z-index: 41;
+    top: 25%;
+    padding: 51px 288px;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+.modal.in .modal-dialog {
+    position: static;
+    margin: auto;
+    /* clear: both; */
+    /* padding: 40px 40px; */
+    background: transparent;
+    text-align: center;
+    width: auto;
+}
+.modal-dialog {
+    background: #e1e1e1;
+    margin: 0 auto;
+    width: 300px;
+    position: relative;
+    z-index: 41;
+    top: 25%;
+    padding: 51px 288px;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+#myModal{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(22, 22, 22, 0.5);
+}
+.fancy {
+    position: relative;
+    background-color: #FFC;
+    padding: 0.7rem;
+    text-align: center;
+    max-width: 216px;
+  }
+
+  .fancy::before {
+    content: "";
+  
+    position : absolute;
+    z-index  : -1;
+    bottom   : 15px;
+    right    : 5px;
+    width    : 50%;
+    top      : 80%;
+    max-width: 200px;
+  
+    box-shadow: 0px 13px 10px black;
+    transform: rotate(4deg);
+  }
+  .search-elastic.no-result {
+    text-align: center;
+}
+.search-elastic {
+    line-height: 299px;
+}
+/* 
+matrimonial styling profile create form */
+.matrimonial .user-registration{
+    min-height: 524px;
+}
+select.invalid,input.invalid {
+    background-color: #ffdddd;
+    border-color: #dc3545!important;
+}
+.form-control.valid {
+    border-color: #28a745!important;
+}
+
+.matrimonial .user-registration .row lable,small,.form-check-input{
+    float: left;
+}
+.matrimonial .user-registration .row i{
+    color: red;
+    font-size: 22px;
+}
+.matrimonial .user-registration fieldset .row {
+    padding-top: 20px;
+}
+.matrimonial .user-registration fieldset .row.no-padding{
+    padding-top: 0px;
+}
+.matrimonial .user-registration fieldset .row lable{
+    padding-top: 10px;
+}
+.matrimonial .user-registration fieldset .row a{
+    color: #3399FF;
+}
+.matrimonial .user-registration fieldset .row a:hover{
+    background:none;
+}
+.matrimonial .user-registration fieldset .row input[type=button]{
+    background: #169bd5;
+    border-radius: 8px;
+}
+   
+
+html {
+    height: 100%;
+    background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+}
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+.check {
+    -webkit-box-shadow: 0px 0px 24px 2px rgba(243, 235, 197, 1);
+    -moz-box-shadow: 0px 0px 24px 2px rgba(243, 235, 197, 1);
+    box-shadow: 0px 0px 24px 2px rgb(218, 193, 73);
+    display: inline-block;
+}
+
+
+
+/*form styles*/
+#new_user {
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+    max-width: 55%;
+    margin: 0 auto!important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+#new_user fieldset {
+    background: #dedede;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 40px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#new_user fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#new_user input, #new_user textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+#new_user input:focus, #new_user textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #5cb85c;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#new_user .action-button {
+    width: 100px;
+    background: #5cb85c;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#new_user .action-button:hover, #new_user .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #5cb85c;
+}
+
+#new_user .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#new_user .action-button-previous:hover, #new_user .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 8px;
+    width: 11.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #5cb85c!important;
+    color: white;
+}
+#progressbar li:before, 
+#progressbar li:after {
+    background: #989898!important;
+    color: white;
+}
+
+
+/* Not relevant to this form */
+.dme_link {
+    margin-top: 30px;
+    text-align: center;
+}
+.dme_link a {
+    background: #FFF;
+    font-weight: bold;
+    color: #5cb85c;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 5px 25px;
+    font-size: 12px;
+}
+
+.dme_link a:hover, .dme_link a:focus {
+    background: #C5C5F1;
+    text-decoration: none;
+}

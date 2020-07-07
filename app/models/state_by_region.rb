@@ -1,0 +1,2 @@
+class StateByRegion < ApplicationRecord
+end

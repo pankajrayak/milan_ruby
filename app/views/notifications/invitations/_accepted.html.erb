@@ -1,0 +1,5 @@
+<p><%= "#{notification.user.first_name} #{notification.user.last_name}" %>: I have  accepted your invitation, lets connect
+<span class="badge"><em>:<%= notification.created_at.to_formatted_s(:short) %></em> </span>
+<span class="msg-notify" id="<%="#{notification.id}"%>"></span>
+<span class="profile-notify" id="<%="#{notification.user.id}"%>"></span>
+</p>

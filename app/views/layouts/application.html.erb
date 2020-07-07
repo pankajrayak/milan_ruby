@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Platform</title>
+    <%= csrf_meta_tags %>
+<%= stylesheet_link_tag    'application',type:"text/css", media: 'all', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <%# <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> %>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pqGrid/2.4.1/pqgrid.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pqGrid/2.4.1/pqgrid.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pqGrid/2.4.1/themes/Office/pqgrid.min.css" />
+
+ 
+  </head>
+
+  <body class="matrimonial">
+    <%= render 'layouts/header' %>
+    <div class="main" style="margin:50px;">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    <div>
+    <%= render 'layouts/footer' %>
+  </body>
+  </html>

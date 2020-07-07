@@ -1,0 +1,298 @@
+                
+                <div class=row>
+                    <div class="form-group">
+                        <h4> 
+                            <lable for="first_name"> <%= f.label :first_name,class:'label blk' %>  
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                            <%= f.text_field :first_name,class:'form-control required',placeholder:"First Name",datafield:"First Name" %>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="middle_name"> <%= f.label :middle_name,class:'label blk' %>  
+                            </lable>
+                            </h2>
+                            <input type="text" class="form-control" id="middle_name" placeholder="Middle Name">
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="last_name"><%= f.label :last_name,class:'label blk' %>
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                            <%= f.text_field :last_name, class:'form-control required',placeholder:"Last Name",datafield:"Last Name" %>
+                    </div>
+                </div>
+                <div class=form-group>
+                    <div class="row">
+                        <div class="">
+                            <h4>
+                                <lable for="gender"><%= f.label :gender,class:'label blk' %>
+                                    <i>*</i>
+                                </lable>
+                                </h2>
+                                <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <%= profile.radio_button :gender, 'Male' , class:"form-check-input required gender"%>
+                                <label class="form-check-label" for="inlineRadio1"><%= t('label.male')%></label>
+                            </div>
+                            <div class="col-md-2">
+                                <%= profile.radio_button :gender, 'Female' , class:"form-check-input required gender"%> 
+                                <label class="form-check-label" for="inlineRadio2"><%= t('label.female')%></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <h4>
+                           <lable for="dob"><%= profile.label :dob,class:'label blk' %>
+                                <i>*</i>
+                            </lable>
+                        </h2><br><br>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <%= profile.text_field :dob, id: "profile_dob",value:  @profile.presence &&  @profile.dob.strftime("%m-%d-%Y"),class: "form-control required",placeholder:"mm/dd/yyyy",datafield:"DOB is required" %>
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="row no-padding">
+                            <h4>
+                            
+                                <lable for="height"><lable for="Height"><%= f.label :height,class:'label blk' %>
+                                    <i>*</i>
+                                </lable>
+                                </h4>
+                        </div>
+                        <div class="row no-padding">
+                             <div class="form-group col-sm-3">
+                                  <%= profile.number_field( :height, { min: 1, max: 7, class:'form-control required',value: @profile.presence &&  @height[0],placeholder:"feet",datafield:"Height"}) %> 
+                              </div>
+                             <div class="form-group col-sm-3">
+                                 <%= number_field_tag :height_inch, nil,{ min: 1, max: 12,value: @profile.presence &&  @height[1], class:'form-control',placeholder:"inches"} %> 
+                             </div>
+                        </div>
+                        <small id="heightHelp" class="form-text text-muted">ex: 5'6 as 5 feet 6 inch, 6, 5'9</small>
+                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="row no-padding">
+                            <h4><lable for="upload"><%= t('label.upload') %>
+                                 
+                              
+                                    <i>*</i>
+                                </lable>
+                                </h2>
+                        </div>
+                        <div class="row no-padding">
+                            <div class="row no-padding">
+                                <h4>
+                                    <lable> <%= t('label.headshot') %></lable>
+                                    </h2>
+                            </div>
+                            <div class="col-md-3">
+                                <h4><%= t('label.image') %></h2>
+                            </div>
+                            <div class="col-md-9">
+                                 <%= f.file_field :head, :multiple => false %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row no-padding">
+                                <h4>
+                                    <lable><%= t('label.bodyshot') %></lable>
+                                    </h2>
+                            </div>
+                            <div class="col-md-3">
+                                <h4>Image</h2>
+                            </div>
+                            <div class="col-md-9">
+                                <%= f.file_field :full_length, :multiple => false %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="public" value="option1">
+                                <label class="form-check-label" for="public"></label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="private" value="option2">
+                                <label class="form-check-label" for="private">Private</label>
+                            </div>
+                        </div>
+                        <small id="" class="form-text text-muted">Choose whether your photos will be visible to all members or only upon request.</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <h4>
+                            <lable for="phoneNumber"><%= f.label :phone_number,class:'label blk' %>  </lable>
+                            </h2>
+                            <%= profile.text_field :phone_number, class:'form-control required',placeholder:"Phone Number" %>
+                            <small id="" class="form-text text-muted"><%=t('label.enter_phone')%></small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <h4>
+                            <lable for="mobileNumber"><%= f.label :mobile_number,class:'label blk' %> </lable>
+                            </h2>
+                            <%= profile.text_field :mobile_number, class:'form-control required',placeholder:"Mobile Number" %>
+                            <small id="" class="form-text text-muted"><%=t('label.enter_mobile')%></small>
+                    </div>
+                </div>
+                 <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable foron"><%= f.label :region,class:'label blk' %>
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                             <%= f.select(:region, Region.all.collect {|p| [ p.name, p.id ] }, { include_blank: true },class:"form-control required",datafield:"Region") %>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="country"><%= f.label :country,class:'label blk' %>
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                             <%= profile.hidden_field :country,class: "form-control required" , placeholder: "Country", id:'hidden-country'%> 
+                            <select class="form-control required" onChange="loadState(false)" name="profile[country]" id="country" datafield="Country">
+                            <option value="">Select Country</option>
+                           
+                            </select>
+                            <small id="" class="form-text text-muted">Indicate country of your residence.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="state"><%= f.label :state,class:'label blk' %> <i>*</i> </lable>
+                            </h2>
+                            <%# <select id="state" class="form-control">
+                                <option selected="" value="">Select State</option>
+                                <option value="Self">Uttarakhand</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                            <%= profile.hidden_field :state,class: "form-control required" ,id:'hidden-state'%>
+                            <select class="form-control required" name="profile[state]" id="state",datafield="State">
+                            <option value="">Select State</option>
+                           
+                            </select>
+                            <small id="" class="form-text text-muted">Indicate state of your residence.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="city"><%= f.label :city,class:'label blk' %> 
+                                
+                            </lable>
+                            </h2>
+                            <%# <select id="city" class="form-control required">
+                                <option selected="" value="">Select City</option>
+                                <option value="Self">Dehradun</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                            <%= profile.text_field :city,class: "form-control required" , placeholder: "City", id:'city'%>
+                            <small id="" class="form-text text-muted">Indicate city of your residence.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="maritalStatus"><%= f.label :marital_status,class:'label blk' %> </lable>
+                            </h2>
+                            <%# <select id="maritalStatus" class="form-control">
+                                <option selected="" value="">Select Marital Status</option>
+                                <option value="Self">Single</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                             <%= profile.select(:marital_status,options_for_select(MaritalStatus.all.collect {|p| [ p.name, p.name ] },@profile.presence &&  @profile.marital_status), { include_blank: true },class:"form-control") %>
+                            <small id="" class="form-text text-muted">Select your marital status.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="haveChild"><%= t('label.have_children')%></lable>
+                            </h2>
+                            <%# <select id="haveChild" class="form-control">
+                                <option selected="" value="">Select</option>
+                                <option value="Self">Single</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                             <%= profile.select(:have_children,options_for_select([['Yes', 'Yes'],['No', 'No']],@profile.presence &&  @profile.have_children),  { include_blank: true },class:"form-control",id: "have_children") %>
+                       
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="religion"><%= f.label :religion,class:'label blk' %> </lable>
+                            </h2>
+                           
+                            
+                             <%= profile.select(:religion,options_for_select(Religion.all.collect {|p| [ p.name, p.name ] },@profile.presence &&  @profile.religion), { include_blank: true },class:"form-control",id: "user_religion") %>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="community"><%= f.label :community,class:'label blk' %> 
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                           
+                            <%= profile.text_field :community,value:'brahmin',class: "form-control required" , placeholder: "",datafield:"Community"%>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="educationLevel"><%= f.label :education_level,class:'label blk' %> 
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                            
+                             <%= profile.select(:education_level,options_for_select([['No formal education', 'No formal education'],['Primary education', 'Primary education'],['Secondary education','Secondary education'],['GED','GED'],["Vocational qualification","Vocational qualification"],["Bachelor's degree","Bachelor's degree"],["Master's degree","Master's degree"],['Doctorate or higher','Doctorate or higher']],@profile.presence &&  @profile.education_level),  { include_blank: true },class:"form-control required",id: "education_level",datafield:"Education Level") %>
+                           
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h2>
+                            <lable for="jobStatus"><%= f.label :job_status,class:'label blk' %> 
+                                <i>*</i>
+                            </lable>
+                            </h2>
+                            <%= profile.select(:job_status,Jobstatus.all.collect {|p| [ p.name, p.name ] },  { include_blank: true },class:"form-control required",id: "user_info_job_status",datafield:"Job Status") %>
+                            
+                    </div>
+                </div>
+                

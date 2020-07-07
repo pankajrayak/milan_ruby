@@ -1,0 +1,74 @@
+
+<div class="container">
+ <div class="row">
+ 
+<div class="col-sm-6">
+<p>
+Call us at 1800-88-8888
+
+Daily between 9AM - 9PM (IST)
+</p>
+<span>Contact Regional Manager</span>
+<%= form_for :new_guest, method: :get do |form| %>
+     <div class="form-group">
+     <label>Regional Manager</label>
+        <div class="row">
+                <%= form.select(:regional, options_for_select(@recipients.map {|p| [  p[:name],p[:id] ] },:selected=>params[:new_guest].presence && params[:new_guest][:regional] ),{},{class:'form-control', onchange: 'this.form.submit();'} ) %>
+        </div>
+      </div>
+ 
+
+    <div class="form-group">
+        <% unless @content.nil? %>
+           
+                <span>  <%= "#{@content.mobile_number} #{(@content.phone_number)}" %><br><br></span>
+              
+          <% end %>
+    </div>
+   
+<% end %>
+</div>
+
+<div class="col-sm-6">
+<%= form_for :new_guest, url: pages_contact_path, method: :posts do |form| %>
+    
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :"Name" %>
+      </div>
+      <div class="row">
+        <%= form.text_field :name,class: "form-control" , placeholder: "Linkedin url"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :email,"Email" %>
+      </div>
+      <div class="row">
+        <%= form.text_field :email,class: "form-control" , placeholder: "email"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :Message,"Message" %>
+      </div>
+      <div class="row">
+        <%= form.text_area :messagebody,class: "form-control" , placeholder: "Message"%>
+      </div>
+    </div>
+       <div class="form-group">
+          <div class="control-label row">
+            <%= form.label :Message,"Message" %>
+          </div>
+       </div>
+       <div class="form-group">
+            <%= form.submit :Send,class: "form-control" %>
+        </div>
+    </div>
+    <% end %>
+
+
+ </div>
+</div>
+
+

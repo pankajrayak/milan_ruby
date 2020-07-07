@@ -1,0 +1,177 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$color_1: #999999;
+$color_2: white;
+$color_3: #105cb6;
+$color_4: #000033;
+$color_5: #aaaaaa;
+$color_6: black;
+$color_7: #ff0084;
+$color_8: #0063dc;
+$background_color_1: #bebebe;
+$border_color_1: #000033;
+$border_color_2: #003366;
+
+.digg_pagination {
+	background: white;
+	cursor: default;
+	a {
+		padding: 0.2em 0.5em;
+		display: block;
+		float: left;
+		margin-right: 1px;
+		text-decoration: none;
+		color: $color_3;
+		border: 1px solid #9aafe5;
+		&:hover {
+			color: $color_4;
+			border-color: $border_color_1;
+		}
+		&:focus {
+			color: $color_4;
+			border-color: $border_color_1;
+		}
+	}
+	span {
+		padding: 0.2em 0.5em;
+		display: block;
+		float: left;
+		margin-right: 1px;
+	}
+	em {
+		padding: 0.2em 0.5em;
+		display: block;
+		float: left;
+		margin-right: 1px;
+	}
+	.disabled {
+		color: $color_1;
+		border: 1px solid #dddddd;
+	}
+	.current {
+		font-style: normal;
+		font-weight: bold;
+		background: #2e6ab1;
+		color: $color_2;
+		border: 1px solid #2e6ab1;
+	}
+	.page_info {
+		background: #2e6ab1;
+		color: $color_2;
+		padding: 0.4em 0.6em;
+		width: 22em;
+		margin-bottom: 0.3em;
+		text-align: center;
+		b {
+			color: $color_4;
+			background: #6aa6ed;
+			padding: 0.1em 0.25em;
+		}
+	}
+	&:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+* {
+	html {
+		.digg_pagination {
+			height: 1%;
+		}
+	}
+	&:first-child {
+		&+html {
+			.digg_pagination {
+				overflow: hidden;
+			}
+		}
+	}
+}
+.apple_pagination {
+	background: #f1f1f1;
+	border: 1px solid #e5e5e5;
+	text-align: center;
+	padding: 1em;
+	cursor: default;
+	a {
+		padding: 0.2em 0.3em;
+		text-decoration: none;
+		color: $color_6;
+		&:hover {
+			text-decoration: underline;
+		}
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+	span {
+		padding: 0.2em 0.3em;
+	}
+	.disabled {
+		color: $color_5;
+	}
+	.current {
+		font-style: normal;
+		font-weight: bold;
+		background-color: $background_color_1;
+		display: inline-block;
+		width: 1.4em;
+		height: 1.4em;
+		line-height: 1.5;
+		-moz-border-radius: 1em;
+		-webkit-border-radius: 1em;
+		border-radius: 1em;
+		text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;
+	}
+}
+.flickr_pagination {
+	text-align: center;
+	padding: 0.3em;
+	cursor: default;
+	a {
+		padding: 0.2em 0.5em;
+		border: 1px solid #dddddd;
+		color: $color_8;
+		text-decoration: none;
+		&:hover {
+			border-color: $border_color_2;
+			background: #0063dc;
+			color: $color_2;
+		}
+		&:focus {
+			border-color: $border_color_2;
+			background: #0063dc;
+			color: $color_2;
+		}
+	}
+	span {
+		padding: 0.2em 0.5em;
+	}
+	em {
+		padding: 0.2em 0.5em;
+	}
+	.disabled {
+		color: $color_5;
+	}
+	.current {
+		font-style: normal;
+		font-weight: bold;
+		color: $color_7;
+	}
+	.page_info {
+		color: $color_5;
+		padding-top: 0.8em;
+	}
+	.previous_page {
+		border-width: 2px;
+		margin-right: 1em;
+	}
+	.next_page {
+		border-width: 2px;
+		margin-left: 1em;
+	}
+}

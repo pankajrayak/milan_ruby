@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sortname: MyString
+  name: MyString
+  phonecode: 1
+
+two:
+  sortname: MyString
+  name: MyString
+  phonecode: 1

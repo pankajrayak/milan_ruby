@@ -1,0 +1,15 @@
+
+ en:
+   activerecord:
+     attributes:
+       partner_preference:
+            age_from: "Age From"
+            age_to: "Age To"
+            height_from: "Height From"
+            height_to: "Height To"
+            marital_status: "Marital Status"
+            have_children: "Have Children"
+            community: "Community"
+     
+   
+

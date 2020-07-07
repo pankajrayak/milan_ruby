@@ -1,0 +1,104 @@
+                <h2 class="fs-title"><%= t('labels.step_six')%></h2>
+                <h3 class="fs-subtitle"><%= t('labels.pref_msg')%></h3>
+                <div class=row>
+                    <div class="form-group">
+                            <div class="row">
+                                <h4>
+                                    <lable for="ageRangeForPartnerPreferences1"><%= t('labels.age_range')%></lable>
+                                </h2>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-2">
+                                <%= pp.text_field :age_from ,class: "form-control" , placeholder: ""%>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-check-label" for="public"><%= t('label.to')%></label>
+                            </div>
+                            
+                            <div class="col-md-2">
+                                 <%= pp.text_field :age_to ,class: "form-control" , placeholder: ""%>
+                            </div>
+                            
+                        </div>
+                        <small id="" class="form-text text-muted"><%= t('label.pref_age_msg')%></small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                            <div class="row">
+                                <h4>
+                                    <lable for="heightForPartnerPreferences1"><%= f.label :height,class:'label blk' %></lable>
+                                </h2>
+                            </div>
+                            <div class="row">
+                             <div class="form-group col-sm-3">
+                            <%= pp.number_field :height_from ,  {min: 1, max: 7,class:'form-control required',placeholder:"feet"} %> 
+                              </div>
+                                  <div class="form-group col-sm-3">
+                                       <%= number_field_tag :height_from_inch, nil, min: 1, max: 12, class:'form-control required',placeholder:"inches" %> 
+                                     </div>
+                           
+                            <div class="col-sm-1">
+                                <label class="form-check-label"><%= t('labels.to')%> </label>
+                            </div>
+                            
+                            <div class="form-group col-sm-3">
+                                 <%= pp.number_field :height_to ,  min: 1, max: 7,class: "form-control" , placeholder: "feet"%>
+                            </div>
+                             <div class="form-group col-sm-3">
+                                       <%= number_field_tag :height_to_inch, nil, min: 1, max: 12, class:'form-control required',placeholder:"inches" %> 
+                             </div>
+                            
+                        </div>
+                        <small id="" class="form-text text-muted"><%= t('labels.pref_height_msg')%></small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="maritalStatusForPartnerPreferences"><%= pp.label :marital_status, class:'label blk' %></lable>
+                            </h2>
+                            <%# <select id="maritalStatusForPartnerPreferences" class="form-control">
+                                <option selected="" value="">Select Marital Status</option>
+                                <option value="Self">Single</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                            <%= pp.select(:marital_status,options_for_select([['Select', ''],['Married', 'Married'], ['Widowed', 'Widowed'], ['Single', 'Single'], ['Divorced', 'Divorced']],""),{},class:"form-control") %>
+                           
+                            <small id="" class="form-text text-muted"><%= t('labels.pref_marital_msg') %></small>
+                    </div>
+                </div>
+                 <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="haveChildForPartnerPreferences"><%= pp.label :have_children, class:'label blk'%></lable>
+                            </h2>
+                            <%= pp.select(:have_children,options_for_select([['select', ''],['Yes', 'Yes'], ['No', 'No'], ['Does not matter', 'Does not matter']],""),{},class:"form-control") %>
+                            <small id="" class="form-text text-muted">Select whether you prefer partner who has kids.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="religionForPartnerPreferences"><%= pp.label :religion, class:'label blk'%></lable>
+                            </h2>
+                             <%= pp.select(:religion,options_for_select(Religion.all.collect {|p| [ p.name, p.name ] }), { include_blank: true },class:"form-control",id: "pp_religion") %>
+     
+                          <small id="" class="form-text text-muted">Select your preferred partner's religion.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="communityForPartnerPreferences"><%= pp.label :coummunity, class:'label blk'%>
+                                
+                            </lable>
+                            </h2>
+                            <%= pp.text_field :community,value:'brahmin',class: "form-control required" , placeholder: ""%>
+                             <small id="Communitymsg" class="form-text text-muted"><%= t('labels.pref_com_msg')%></small>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />

@@ -1,0 +1,102 @@
+<p id="notice"><%= notice %></p>
+<div class="col-sm-6">
+
+<h1>Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">comment</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+       <td><%= content_tag :name,comment.name %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comment', new_comment_path %>
+</div>
+<div class="col-sm-6">
+<ul>
+<% @connections.each do |item| %>
+<li>
+<p>
+<em>
+<%= "#{item.user.first_name} #{item.user.last_name}" %> </em>
+ <button class="btn btn-primary connect-profile" id="<%="#{item.user_id}"%>"> <span class='glyphicon glyphicon-cloud'> Connect</button>
+  </p>
+  </li>
+<%end%>
+</div>
+<div class="row">
+<ul>
+<% @interests.each do |item| %>
+<li>
+<p>
+
+ <button class="btn btn-primary accept connect-profile" id="<%="#{item.id}"%>"> <span class='glyphicon glyphicon-cloud'> accept</button>
+ <button class="btn btn-primary reject connect-profile" id="<%="#{item.id}"%>"> <span class='glyphicon glyphicon-cloud'> reject</button>
+</p>
+</li>
+<%end%>
+</div>
+
+
+
+
+<script>
+
+  $(document).ready(function(){
+
+
+
+$('.connect-profile').on('click',function(){
+
+    
+var id=$(this).attr('id');
+  
+  var action='';
+ var className= $(this).attr('class');
+   if(className.indexOf('reject') !== -1) {
+      action='reject'
+    }
+   else if(className.indexOf('accept') !== -1)
+   {
+        action='accept'
+   }
+    else{
+      action='request'
+    }
+$.ajax({
+        type: 'POST',
+       // dataType: 'json',
+        url: '/match/requests',
+        success: function (respond) {
+          
+            $('.page-'+id).hide();
+
+         
+            //$('.model_data_saved').css('display','block');
+        
+            //locationReload= true;
+        },
+        data: {
+           interest:{user_to:id,activity:action}
+        }
+    
+    })
+ 
+})
+
+  })
+</script>

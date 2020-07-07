@@ -1,0 +1,53 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 
+                <% if current_user.user_role.role_id===1 && current_user.profile.id==profile.id%>
+                <%= 'Edit Profile' %>
+                <%elsif current_user.user_role.role_id!=1%>
+                <%= 'Manage Member'%>
+                <%end%>
+                 </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="">
+                    <%if current_user.user_role.role_id!=1%>
+                        <select onchange="regionalChange(this)" class="form-control regional-change">
+                        <option value="">Manage Member</option>
+                        <%if (profile.profile_state=="new" || profile.profile_state=="awaiting_review"|| profile.profile_state=="being_reviewed")%>
+                           <option value="<%=profile.id%>">Approve Member</option>
+                           <option value="<%=profile.id%>">Request Information</option> 
+                           <option value="<%=profile.id%>">Edit Profile</option> 
+                           <option value="<%=profile.id%>">Reject Member</option>
+                           <option value="<%=profile.id%>">Report as Spam</option> 
+                           <%elsif profile.profile_state=="accepted"%>
+                           <option value="<%=profile.id%>">Edit Profile</option> 
+                           <option value="<%=profile.id%>">Deactivate Member</option>
+                           <option value="<%=profile.id%>">Report Member</option>
+                           <%elsif profile.profile_state=="rejected"%>
+                           <option value="<%=profile.id%>">Edit Profile</option> 
+                           <option value="<%=profile.id%>">Activate Member</option>
+                           <option value="<%=profile.id%>">Report Member</option>
+                        <%end%>
+                        </select>
+                        <%elsif current_user.user_role.role_id===1 && current_user.profile.id==profile.id%>
+                        <select onchange="userProfileEdit(this)" class="form-control regional-change">
+                        <option value="">Edit Profile Settings</option>
+                           <option value="<%=profile.id%>">Username and Password</option>
+                           <option value="<%=profile.id%>">Personal Information</option> 
+                           <option value="<%=profile.id%>">Values and Interests</option> 
+                           <option value="<%=profile.id%>">Partner Preferences</option>
+                           <option value="<%=profile.id%>">Payment and Membership Information</option>                     
+                                               
+                        </select>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

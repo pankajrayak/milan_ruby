@@ -1,0 +1,248 @@
+en:
+  milan:
+    default_password: SindhiShaadi#234
+    link:
+      login: Click here to login
+      register: Click here to register
+    subject:
+      inform_admin: Action Pending From One Week
+      expiration: Membership Expiration
+      message:  '%{name} message'
+      msg: New Message Recieved
+      match: New Matches
+      con_respond: Respond to Connnection Request
+      reminder: Reminder to respond
+      con_request: Connection Request
+      reject: Rejected
+      activated: Profile Activated
+      deactivated: Profile Deactivated
+      export_sub: User Export Data
+      export_req: Export Request
+      from_user: User message
+      request_more_info: New notification received
+      more_info: New notification received
+      approve: Profile Approved
+      new_profile: New Profile
+    inform_regional: You have received a new profile for review. Please log in to the Milan portal and review the profile within the next 72 hours.
+    to_regional: Dear Regional Manager
+    thanks: Thanks
+    dear: Dear %{name},
+    admin: Milan Administrator
+    to_user: Dear User
+    reg_con: '%{count} Users are connected to %{region}'
+    no_reg_con: No User is connected to this region
+    register_msg: Thank you for registering with Milan! Please click on the following link to confirm your account.<br/><br/> %{link} <br/><br/> Upon confirmation of your account, your profile will be placed under review in accordance with our terms and conditions. We will reach out to you if we require further information. The approximate review time is 24-72 hours.
+    register_msg_admin: Thank you for helping your Sindhi community by being a admin! You may now login to the Milan portal by %{link} or visiting milan.agsa.co. Please note, once you login, you must update your profile details by going to "My profile" in the top right hand of the screen, under "Hello!".
+    register_msg_manager: TThank you for helping your Sindhi community by being a regional manger! You may now login to the Milan portal by %{link} or visiting milan.agsa.co. Please note, once you login, you must update your profile details by going to "My profile" in the top right hand of the screen, under "Hello!".
+    approved_profile: Congratulations! Your profile has been approved to be included within the Milan community of Sindhi singles searching for their soulmate. You may now proceed to tap into your Sindhi connections and find your perfect match!
+    team: The Milan Team
+    more_info: In reviewing your profile, we noticed that one or more of the following items needs an update in order for your profile to be approved in accordance with our terms and conditions.
+    info:
+      point1: You profile must include at least one headshot and one full length-photo.
+      point2: Your profile pictures must be clear and professional in appearance.
+      point3: The ‘About Me’ section should contain more background information and/or should be reviewed for violation of terms/conditions. 
+      point4: Profile details should be rechecked for accuracy and/or violation of terms/conditions.
+    notify : You have a new notification. Please login to the Milan portal to review your notifications. 
+    reject_profile: Unfortunately, your profile has not been approved to be included in the Milan community.
+    good_luck: Good luck to you on your search.
+    connection:
+      new: You have received a new connection request. Please login into the Milan portal to respond.
+      respond: You have received a response on your interest request. Please login to the Milan portal to review.
+      reminder: You have received a reminder to respond to an interest request. Please login to the Milan portal to respond.
+    msg:
+      received: You have received a message! Please login to your Milan portal and navigate to the ‘Messages’ tab to respond. 
+      match: You have new matches. Please login to your Milan portal to review these matches. Good luck!
+      expire: Your membership is expiring soon. Please logon to the Milan portal to renew your membership and continue your sindhi soulmate search.
+      activated: Your Profile is now active.
+      deactivated_user: Your Profile is deactivated as per your request.
+      deactivated_admin: Your Profile is deactivated by Administrator.
+      pending_profile:  '%{name} profile from region %{region} is pending. No action is taken by Regional Manager. '
+      deactivate_request: '%{name} has requested deactivation of %{sex} profile, click here: %{link}'
+      account_created: '%{name} has created %{sex} profile, click here to review member profile: %{link}'
+      need_more_info: '%{name} has requested deactivation of %{sex} profile, click here: %{link}'
+      deactivate_request: '%{name} has requested deactivation of %{sex} profile, click here: %{link}'
+      export_request: '%{name} has requested for Data export under Art. 20 GDPR Right to data portability. Respond to the request within 72 hours'
+  expire:
+    one_month: Your subscription will end this month. 
+    two_month: Your subscription will end after two months.
+    one_day: Your subscription will end today please renew your membership.
+    subject: Membership Renewal Reminder  
+  password:
+    create: "Create a Password"
+    confirm: "Confirm Password"
+    length: "Must be 8 characters long or other password criteria."
+  labels:
+    step_one: "Create Your Profile"
+    step_two: "Personal Information"
+    step_three: "Diet And Lifestyle"
+    step_four: "Horoscope"
+    step_five: "Values and Interests"
+    step_six: "Partner Preferences"
+    step_seven: "Payment"
+    step_eight: "Payment Confirmation"
+    noshare: "We'll never share your email with anyone else."
+    for: "Create Profile For"
+    conditions: "By choosing to continue, you agree to our Terms & Conditions and Privacy Policy"
+    member: "Already a Member?"
+    male: "Male"
+    female: "Female"
+    upload: "Upload Your Photos"
+    headshot: "Headshot Photo"
+    image: "Image"
+    bodyshot: "Full Length Body Shot"
+    public: "Public"
+    private: "Private"
+    enter_phone: 'Enter your landline phone number.'
+    enter_mobile: 'Enter your mobile number.'
+    have_children: 'Do you have children?'
+    interest_info: 'This information helps us match you with people who might be interested in you'
+    yes: 'Yes'
+    tob_msg: 'Specify the time you were born.'
+    manglik: 'Are you Manglik?'
+    pob_msg: 'Specify your place of birth.'
+    social: 'Only socially'
+    no: 'Only socially'
+    sunsign_msg: 'Specify your sun sign.'
+    pref_msg: 'Partner Preferences will be used to find specific matches according to your preferences'
+    age_range: 'Age Range'
+    to: ' To: '
+    pref_age_msg: "Enter your preferred partner's age range (Ex: 22 - 45)."
+    pref_height_msg: "Enter your preferred partner's height range (Ex: 4'8 as 4 feet 5 inch-5'6 as 5 feet 6 inch)."
+    pref_marital_msg: "Select your preferred partner's marital status."
+    pref_com_msg: "Select your preferred partner's community."
+    fill_cred: "Fill in your credentials"
+    plan: "Choose your plan"
+    payment: "Payment"
+    name: "Name"
+    shi_add: "Shipping Address"
+    street: "Street"
+    zip: "Zip"
+    card: "Card Number"
+    cvv: "CVV"
+    expire_date: "Expiration Date"
+    p_code: "Postal Code"
+    complete_reg: "PAY AND COMPLETE REGISTRATION"
+  prompt:
+    delete: 'successfully deleted'
+    denied: 'Access Denied'
+    state: 'State is not defined'
+    profile_by_admin: "Administrator has %{task} your profile, check here : "
+    profile_by_manager: "Regional Manager has %{task} your profile, check here:" 
+    by_admin: "Action by Admin"
+    delete_request: "Deactivation Request"
+    msg_user: "Member message"
+    msg_admin: "Admin message"
+    msg_manager: "Manager message"
+    request_more_info: "Need more information"
+    by_manager: "Action by Regional Manager"
+    confirm_email: "Your account is created successfully. We have sent you an confiramtion email."
+    wrong: "Something Went Wrong!!"
+    work_flow:
+         user_accept: "User successfully accepted"
+         user_reject: "User successfully rejected"
+    admin:
+      request_more_info: "Need more information"
+      new: "Admin message"
+      being_reviewed: "Need more information"
+      awaiting_review: "Admin message"
+      rejected: "Admin message"
+      accepted: "Admin message"
+    manager:
+      request_more_info: "Need more information"
+      new: "Manager message"
+      being_reviewed: "Need more information"
+      awaiting_review: "Manager message"
+      rejected: "Manager message"
+      accepted: "Manager message"
+
+  mailboxer:
+    manager:
+      accepted: 'Congratulations! Regional manager %{name} has approved your profile. You may now proceed to tap into your Sindhi connections and find your perfect match!' 
+      rejected: Regional manager %{name} has deactivated your profile
+      email_confirmations: Thank you for helping your Sindhi community by being a regional manger! You may now login to the Milan portal by %{link}, or visiting milan.agsa.co. Please note, once you login, you must update your profile details by going to "My profile" in the top right hand of the screen, under "Hello!"
+      need_more_info: 'Regional manager %{name} requested to add more details under profile section that can help us searching a perfect match for you, click here: %{link}'
+    member:
+      new: '%{name} has created %{sex} profile, please review %{sex} profile, click here: %{link}'
+      being_reviewed:  '%{name} has responded regarding your need for more information request.  click here: %{link}'
+      rejected: '%{name} has requested deactivation of %{sex} profile, click here: %{link}'
+    admin:
+      accepted: 'Congratulations! administrator %{name} has approved your profile. You may now proceed to tap into your Sindhi connections and find your perfect match!' 
+      rejected: Administrator %{name} has deactivated your profile
+      need_more_info: 'Administrator %{name} requested to add more details under profile section that can help us searching a perfect match for you, click here: %{link}'   
+    message_mailer:
+      subject_new: "Matrimonial new message: %{subject}"
+      subject_reply: "Matrimonial new reply: %{subject}"
+    notification_mailer:
+      subject: "Matrimonial new notificamanagertion: %{subject}"
+      
+  greetings:
+    hello: 
+      world: Hello World!
+      friend: Hello Friend!
+      user: Hello %{user}
+  inbox:
+    messages:
+      one: You have one message in your inbox.
+      other: You have %{count} messages in your inbox.
+  time:
+    am: a.m.
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: p.m.
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    - 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      birth: ! '%d.%m.'
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      month_and_year: ! '%b %Y'
+      short: ! '%b %d'
+    month_names:
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - year
+    - month
+    - day
+  

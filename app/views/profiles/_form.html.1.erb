@@ -1,0 +1,283 @@
+<div class="">
+  <%= form_with(model: @profile,url:"/profiles/#{@profile.id}",local: true) do |form| %>
+<% if current_user.admin.present?%>
+ <div class="form-group">
+        <div class="control-label row">
+        <label>Comment</label>
+         </div>
+  <%= form.text_field :comment,class:'form-control',id:'admin_comment'%>
+  </div>
+<%end%>
+    <% if  @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize( @profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+        <ul>
+          <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <div class="form-group">
+        <div class="control-label row">
+          <%= form.label :gender %>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <%= form.label :'Male',class:"" %>
+            <%= form.radio_button :gender, 'Male' , class:""%> 
+          </div>
+          <div class="col-sm-4">
+            <%= form.label :'Female',class:"" %>
+            <%= form.radio_button :gender, 'Female' , class:""%> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :about_me %>
+      </div>
+      <div class="row">
+        <%= form.text_area :about_me, id: :profile_about_me,class: "form-control" , placeholder: "Write about yourself" %>
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :instagram %>
+       </div>
+      <div class="row">
+        <%= form.text_field :instagram, id: :profile_interest ,class: "form-control" , placeholder: "Instagram url"%>
+       </div>
+    </div> 
+    
+    <%# <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :linkedin,"Linkedin Url" %>
+    <%#  </div>
+      <div class="row">
+        <%= form.text_field :linkedin,class: "form-control" , placeholder: "Linkedin url"%>
+   <%#   </div>
+    </div> %>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :facebook,"Facebook Url" %>
+      </div>
+      <div class="row">
+        <%= form.text_field :facebook,class: "form-control" , placeholder: "Facebook url"%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :job_status %>
+      </div>
+      <div class="row">
+        <%= form.select(:job_status,Jobstatus.all.collect {|p| [ p.name, p.name ] },  { include_blank: true },class:"form-control",id: "user_info_job_status") %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :partner_preferences,'Looking For' %>
+      </div>
+      <div class="row">
+        <%= form.select(:partner_preferences, Partner.all.collect {|p| [ p.name, p.name ] }, { include_blank: true },class:"form-control",id:"user_info_partner_preferences") %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :height,'Height' %>
+      </div>
+      <div class="row">
+      <div class="form-group col-sm-1">
+       <%= form.text_field :height,class: "form-control",value:@height[0].present? && @height[0] , placeholder: "feet"%>
+   </div>
+    <div class="form-group col-sm-1">
+     <%= text_field_tag :height_inch,@height[1] ,class: "form-control", placeholder: "inches"%>
+   </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :interest,'Interest' %>
+      </div>
+      <div class="row">
+        <%= form.select(:interest,options_for_select([['', ''],['Acting', 'Acting'], ['Baking', 'Baking'], ['Calligraphy', 'Calligraphy'], ['Creative writing', 'Creative writing'], ['Crossword', 'Crossword'], ['Dance', 'Dance'], ['Ice skating', 'Ice skating'], ['Gun Smithing', 'Gun Smithing'], ['Gaming', 'Gaming']], @profile.interest.split(';')),{},multiple:true,class:"form-control",id:"user_interest") %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :member_relationship,'Profile for' %>
+      </div>
+      <div class="row">
+        <%= form.select(:member_relationship, Relationship.all.collect {|p| [p.name , p.name]}, { include_blank: true },class:"form-control") %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :country,'Country' %>
+      </div>
+      <div class="row">
+          <%= form.text_field :country,class: "form-control" , placeholder: "Country", id:'country'%>
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :state,'State' %>
+      </div>
+      <div class="row">
+          <%= form.text_field :state,class: "form-control" %>
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :city,'City' %>
+      </div>
+      <div class="row">
+          <%= form.text_field :city,class: "form-control" %>
+      </div>
+    </div>
+
+ 
+  
+
+    <%= fields_for @profile.user do |u|%>
+      <%= u.label :region %>
+      <%= u.select(:region, Region.all.collect {|p| [ p.name, p.id ] },{ include_blank: true },class:"form-control") %>
+    <% end %>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :phone_number,'Phone Number' %>
+      </div>
+      <div class="row">
+         <%= form.text_field :phone_number,class: "form-control"%>
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :mobile_number,'Mobile Number' %>
+      </div>
+      <div class="row">
+         <%= form.text_field :mobile_number,class: "form-control"%>
+      </div>
+    </div>
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :have_children,'Have Children' %>
+      </div>
+      <div class="row">
+         <%= form.text_field :have_children,class: "form-control" , placeholder: ""%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :religion,'Religion' %>
+      </div>
+      <div class="row">
+         <%= form.text_field :religion,class: "form-control" , placeholder: ""%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :community,'Community' %>
+      </div>
+      <div class="row">
+         <%= form.text_field :community,class: "form-control" , placeholder: ""%>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :education_level,'Education Level' %>
+      </div>
+      <div class="row">
+        <%= form.select(:education_level,options_for_select([['No formal education', 'No formal education'],['Primary education', 'Primary education'],['Secondary education','Secondary education'],['GED','GED'],["Vocational qualification","Vocational qualification"],["Bachelor's degree","Bachelor's degree"],["Master's degree","Master's degree"],['Doctorate or higher','Doctorate or higher']],@profile.education_level),  { include_blank: true },class:"form-control") %>
+       
+      </div>
+    </div>
+
+     <div class="form-group">
+      <div class="control-label row">
+        <%= form.label :marital_status,'Marital Status' %>
+      </div>
+      <div class="row">
+        <%= form.select(:marital_status,options_for_select(MaritalStatus.all.collect {|p| [ p.name, p.name ] },@profile.marital_status), { include_blank: true },class:"form-control") %>
+                            
+        
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= form.label :photo,'Is visible' %>
+      <%= form.check_box :photo,class: ""%>                   
+    </div>
+    <%if (@profile.id.nil?)%>
+      <div class="form-group">
+        <div class="control-label row">
+          <%= form.label :image,'Upload Photos' %>
+        </div>
+        <div class="row">
+          <%= form.file_field :image, :multiple => true %>
+        </div>
+      </div>
+      <div class="actions">
+        <input type="button" name="commit" value="Create Account" class="btn btn-sm btn-primary" onclick="validateUserProfileForm()" data-disable-with="Create Account">
+      </div>
+    <%else%>
+      <div class="actions">
+        <input type="button" name="commit" value="Update Account" class="btn btn-sm btn-primary" onclick="validateUserProfileForm()" data-disable-with="Create Account">
+      </div>
+    <%end%>  
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+$('#vacation1, #vacation2, #vacation3, #vacation4').bind('keypress blur', function() {
+        
+    $('#vacation').val($('#vacation1').val() + ', ' +
+                             $('#vacation2').val() + ', ' +
+                             $('#vacation3').val() + ', ' +
+                             $('#vacation4').val() );
+});
+   $("#profile_about_me").on('input', function(){
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var profile_about_me = this.value;
+        $('.profile_about_me_error').remove(); 
+        if(profile_about_me.length < 3)
+        {
+            $(this).after( '<p class="profile_about_me_error error">This field is Required.</p>' );
+            //$(this).focus();
+        }    
+    });
+     $("#country").on('input', function(){
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var user_info_country = this.value;
+        $('.user_info_country_error').remove(); 
+        if(user_info_country.length < 3)
+        {
+            $(this).after( '<p class="user_info_country_error error">Country is Required.</p>' );
+            //$(this).focus();
+        }    
+    });
+    $("#country").focus(function(){
+         geolocate();
+     });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaqdpN4fxKCA8eKB7s0dpTHFphXsbY3bQ&libraries=places&callback=initAutocomplete"
+       async defer></script>

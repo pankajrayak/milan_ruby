@@ -1,0 +1,2 @@
+class CountryByRegion < ApplicationRecord
+end

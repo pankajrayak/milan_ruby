@@ -1,0 +1,34 @@
+                    
+                  <div class="module">
+                        <div class="stripe-5">  
+                        <li>  
+                           <div class="col-sm-9">
+                            <span class="name"> <%= link_to raw(truncate(strip_tags(conversation.subject), :length => 10)) , conversations_show_path(id:conversation) %>: </span>
+                            <span class="result-link"><%=  raw(truncate(strip_tags(conversation.last_message.body.html_safe), :length => 50)) %></span>
+                         </div>   
+                         <div class="col-sm-3  pull-right">
+                         <div class="col-sm-7">  
+                            <span class="badge"><%= conversation.last_message.created_at.strftime("%-d %B, %Y %H:%M") %>
+                              </span>
+                         </div>
+                        <div class="btn-group col-sm-5">
+     <% if conversation.is_trashed?(current_user) %>
+    <%= link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post %>
+  <% else %>
+    <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+                data: {confirm: 'Are you sure?'} %>
+   <% end %>
+    <% if conversation.is_unread?(current_user) %>
+       <%= link_to '<i class="glyphicon glyphicon-ok"></i>'.html_safe, mark_as_read_conversation_path(conversation),
+                  class: 'btn btn-xs btn-info', method: :post %>
+   
+      <% end %>
+    </div>
+     </li>
+  </div>
+          
+  </div>               
+                             
+
+
+

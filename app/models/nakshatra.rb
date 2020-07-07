@@ -1,0 +1,2 @@
+class Nakshatra < ApplicationRecord
+end

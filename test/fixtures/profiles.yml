@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: MyString
+  dob: 2018-05-02
+  about_me: MyText
+  
+  user: one
+
+two:
+  gender: MyString
+  dob: 2018-05-02
+  about_me: MyText
+  user: two

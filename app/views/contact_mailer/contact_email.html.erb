@@ -1,0 +1,8 @@
+    <h1>Hi <%= @name %></h1>
+    <p><small> Guest Name: <%= @message.name %></small></p>
+    <p><small> Guest Email: <%= @message.from %></small></p>
+    <p>
+    <%=   @message.message.html_safe %>
+    </p>
+<p><%= I18n.t 'milan.thanks' %>!<br/>
+<%= I18n.t 'milan.admin' %></p>

@@ -1,0 +1,147 @@
+<div class="card" style="display: block;width: 100%;">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation">
+      <a href="/admin">My Dashbord</a>
+    </li>
+    <li role="presentation"  class="active">
+      <a href=/admin/portal_members><%= current_user.admin=="GBL" ? 'Portal Members' : 'My Assignments' %></a>
+    </li>
+    <li role="presentation">
+      <a href="/admin" > Regional Managers</a>
+    </li>
+    <li role="presentation">
+      <a href="/admin/inbox"> Inbox</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+ 
+  <h4 style="float:left">Portal Members</h4x >
+  
+  
+  <div class="row" style="padding-left: 50px;">
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <div class="card regional-content-header">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active all">
+            <%# <a href="#allMessage" aria-controls="Sent Invitation" role="tab" data-toggle="tab">All</a> %>
+            <%# <%= link_to "<span class='badge pull-right'>2</span> All".html_safe,conversations_index_path(box:'all') %> 
+            <a href="javascript:getProfileForAdmin('all')"><span class="badge pull-right all-count">&nbsp;</span> All&nbsp;  </a>
+          </li>
+          <li role="presentation" class="new-request">
+            <%# <a href="#receviedInvitation" aria-controls="New Invitation" role="tab" data-toggle="tab">Recevied Invitations </a> %>
+            <%# <%= link_to "<i class='badge pull-right'></i> New Requests ".html_safe,conversations_index_path(box:'sent') %>
+            <a href="javascript:getProfileForAdmin('awaiting_review')"><span class="badge pull-right new-count"></span>  New Requests &nbsp;</a>
+          </li>
+          <li role="presentation" class="in-review-request">
+             <a href="javascript:getProfileForAdmin('being_reviewed')"><span class="badge pull-right in-review-count"></span>  In Review &nbsp;</a>
+          </li>
+          <li role="presentation" class="current-request">
+            <a href="javascript:getProfileForAdmin('accepted')"><span class="badge pull-right current-count"></span>  Current &nbsp;</a>
+          </li>
+           <li role="presentation" class="deactivated-request">
+            <a href="javascript:getProfileForAdmin('rejected')"><span class="badge pull-right deactivate-count"></span>  Deactivated &nbsp;</a>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="row "style="padding-top:10px;padding-bottom:10px;">
+            <div class="col-md-1">
+                <div class="" >
+                    <h5>Filter By</h5>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <span>Age</span>
+                  
+                   <%=select("filter_age", "from", options_for_select(@age_list.map {|p| [  p[:name],p[:value] ] },:selected=>params[:partner_preference].presence && params[:partner_preference][:age_from]),{include_blank:true},class:"")%>
+                <span>To:</span>
+                 <%=select("filter_age", "to", options_for_select(@age_list.map {|p| [  p[:name],p[:value] ] },:selected=>params[:partner_preference].presence && params[:partner_preference][:age_to] ),{include_blank:true},class:"")%>
+            </div>
+            <div class="col-md-3">
+                <div class="" >
+                    <span>By Status</span>
+                    <select id="filter_status">
+                      <option selected="" value="">All</option>
+                      <option value="awaiting_review">New Requests</option>
+                      <option value="being_reviewed">In Review</option>
+                      <option value="accepted">Current</option>
+                      <option value="rejected">Deactivated</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="" >
+                    <span>By Region</span>
+                    <select id="filter_by_region">
+                      <option selected="" value="">All Regions</option>
+                      <option value="Region 1">Region 1</option> 
+                      <option value="Region 2">Region 2</option>
+                      <option value="Region 3">Region 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row "style="padding-top:10px;padding-bottom:10px;">
+            
+            <div class="col-md-3">
+                <span>View</span>
+                  <input id="filter_gender" type="radio" value="" name="Gender " checked="">
+                  <span>All</span>
+                 
+                  <input id="filter_gender" type="radio" value="male" name="Gender ">
+                  <span>Women</span>
+
+                  <input id="filter_gender" type="radio" value="female" name="Gender ">
+                  <span>Men</span>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+             <div class="col-md-6">
+                <span>By Name</span>
+                <input id="filter_by_name" type="text" value="" placeholder="&nbsp;&nbsp;&nbsp; Type name here">
+                <input type="button" onClick="getFilters()" class="btn btn-primary" id="filter_search" value="Delete">
+            </div>
+            
+        </div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="allMessage">
+            <div class="row message" style="border: 1px solid gray">
+              
+                <table class="table table-striped">
+                    <thead>
+                    </thead>
+                    <tbody>
+                     <%= render "admin/portal_members"%>
+                      
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="receviedInvitation">
+            Recevied Invitations
+          </div>
+          <div role="tabpanel" class="tab-pane" id="sentInvitation">
+            Sent Invitations
+          </div>
+          <div role="tabpanel" class="tab-pane" id="otherNotification">
+            Other Notifications
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+  <%# popup modal %>
+  <%= render 'admin/reason_modal' %>
+   
+
+<style>
+div.pq-grid * {
+    font-family: Arial;
+    font-size: 15px;
+}
+</style>

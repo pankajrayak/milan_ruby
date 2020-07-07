@@ -1,0 +1,62 @@
+
+<div>
+     <%= devise_error_messages! %>
+</div>
+<!-- MultiStep Form -->
+<div class="row user-registration">
+    <div class="col-md-12">
+       
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= fields_for Profile.new do |profile|%>
+        <%= fields_for PartnerPreference.new do |pp|%>
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active"><%= t('labels.step_one')%></li>
+                <li><%= t('labels.step_two')%></li>
+                <li><%= t('labels.step_three')%></li>
+                <li><%= t('labels.step_four')%></li>
+                <li><%= t('labels.step_five')%></li>
+                <li><%= t('labels.step_six')%></li>
+                <li><%= t('labels.step_seven')%></li>
+                <li><%= t('labels.step_eight')%></li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <%= render 'devise/registrations/create_profile', :profile => profile,:f => f   %>
+            </fieldset>
+
+            <fieldset>
+                <h2 class="fs-title"><%= t('labels.step_two')%></h2>
+                <%= render 'devise/registrations/personal_information', :profile => profile,:f => f   %>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />
+            </fieldset>
+            <fieldset>
+                <%= render 'devise/registrations/diet_lifestyle',:profile => profile, :pp=> pp%>
+            </fieldset>
+            <fieldset>
+                <%= render 'devise/registrations/horoscope',:profile => profile, :pp=> pp%>
+            </fieldset>
+            <fieldset>
+                <%= render 'devise/registrations/values_interests', :profile => profile%>
+            </fieldset>
+
+            <fieldset>
+                <%= render 'devise/registrations/partner_preferences', :pp => pp,:f => f %>
+            </fieldset>
+            <fieldset>
+                <%= render 'devise/registrations/payment',:profile => profile, :pp => pp%>
+            </fieldset>
+             <fieldset>
+                <%= render 'devise/registrations/payment_confirmation', :pp => pp%>
+            </fieldset>
+
+        <% end %><!-- Profile form -->
+        <% end %><!-- patner preferences form -->
+        <% end %><!-- User form -->
+        <!-- link to designify.me code snippets -->
+
+        <!-- /.link to designify.me code snippets -->
+    </div>
+</div>
+<!-- /.MultiStep Form -->

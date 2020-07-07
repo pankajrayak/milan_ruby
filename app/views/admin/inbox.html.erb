@@ -1,0 +1,228 @@
+<div class="card" style="display: block;width: 100%;">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" >
+      <a href="/admin">My Dashbord</a>
+    </li>
+    <li role="presentation">
+      <a href=/admin/portal_members><%= current_user.admin=="GBL" ? 'Portal Members' : 'My Assignments' %></a>
+    </li>
+    <li role="presentation">
+      <a href="/admin" > Regional Managers</a>
+    </li>
+    <li role="presentation" class="active">
+      <a href="/admin/inbox"> Inbox</a>
+    </li>
+  </ul>
+</div>
+<style>
+  .card { background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; width: 90%; float: right; }
+</style>
+<div class="container min-height">
+<br>
+ <div class="row">
+        <div class="col-md-5 col-md-push-6 main-chat">
+   <%= form_tag messages_path, method: :post do %>
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
+            <div class="panel-collapse collapse in" id="collapseOne" style="">
+      <div class="panel-body">
+                
+  <div class="form-group">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'recipients', 'Choose recipients' %>
+    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control' %>
+  </div>
+
+    </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        
+                        <span class="input-group-btn">
+                         <%= submit_tag 'Send', class: 'btn btn-sm btn-primary' %>
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                              <i class='fa fa-close'></i>  close</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <div>
+<h2>Messages</h2><br><br>
+
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="<%=@class_all%>">
+            <%# <a href="#allMessage" aria-controls="Sent Invitation" role="tab" data-toggle="tab">All</a> %>
+            <%= link_to "<span class='badge pull-right'>#{@unreadmsg}</span> All".html_safe,inbox_admin_index_path(box:'all',message_box:'all') %>
+          </li>
+          <li role="presentation" class="<%=@class_recev%>">
+            <%# <a href="#receviedInvitation" aria-controls="New Invitation" role="tab" data-toggle="tab">Recevied Invitations </a> %>
+            <%= link_to "<i class='badge pull-right'></i> From Members".html_safe,inbox_admin_index_path(box:'sent',message_box:"from_members") %>
+          </li>
+          <li role="presentation" class="<%=@class_sent%>">
+            <%= link_to "<i class='badge pull-right'></i>From Managers".html_safe,inbox_admin_index_path(box:'sent',message_box:"from_managers") %>
+          </li>
+          <li role="presentation" class="<%=@class_other%>">
+            <%= link_to "<i class='badge pull-right'></i>Other Notifications".html_safe,inbox_admin_index_path(box:'sent',message_box:"other") %>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="row gray-color">
+            <div class="col-md-6">
+                <div class="" style="padding-top:10px;">
+                    <label><input type="checkbox" id="chckDeleteAllMessages" value="">  Select All</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+            <button class='btn btn-danger' id='composemsg'>Compose </button>
+                <input type="button" class="btn btn-primary pull-right" id="delete_conversations" value="Delete">
+                
+            </div>
+        </div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="allMessage">
+            <div class="row message" style="border: 1px solid gray">
+                <table class="table table-striped">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    <%= will_paginate @conversations %>
+                        <%= render partial: 'admin/conversation', collection: @conversations %>
+                       <%= will_paginate @conversations%>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="receviedInvitation">
+            Recevied Invitations
+          </div>
+          <div role="tabpanel" class="tab-pane" id="sentInvitation">
+            Sent Invitations
+          </div>
+          <div role="tabpanel" class="tab-pane" id="otherNotification">
+            Other Notifications
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+      <script>
+    $(document).ready(function(){
+        $('.main-chat').hide();
+
+        $('#composemsg').on('click',function(){
+
+            $('.main-chat').toggle();
+        })
+  
+    });
+    </script>
+</div>
+
+<script>
+
+  $(document).ready(function(){
+      $("#chckDeleteAllMessages").on('change',function(){
+          if($(this).is(":checked")){
+             // $(".allCheck").attr("checked","checked")
+              $(".allCheck").prop('checked', true);
+          }else{
+              //$(".allCheck").removeAttr("checked")
+              $(".allCheck").prop('checked', false);
+          }
+      });
+$("#delete_conversations").on("click",function(){
+    var ids = [];
+    $('input.chckDeleteConvertation:checkbox:checked').each(function () {
+        ids.push($(this).val());
+    });
+    if(ids.length == 0 ){
+        alert("Please select a message.");
+        return false;
+    }
+     var result = confirm("Are you sure you want to delete this.")
+    if(result){
+        $.ajax({
+            url:"/conversations/destroy_conversation",
+            type:'get',
+            success:function(response){
+                 alert("Message Deleted successfully.")
+                 $.each(ids,function(key,value){
+                    $(".rowId"+value).css("display","none");
+                 })
+            },
+            data:{ids: ids}
+        });
+       
+    }else{
+        return false;
+    }
+});
+
+
+$('.connect-profile').on('click',function(){
+
+    
+var id=$(this).attr('id');
+  
+  var action='';
+ var className= $(this).attr('class');
+   if(className.indexOf('reject') !== -1) {
+
+       action='reject'
+
+   }
+   else
+   {
+        action='accept'
+   }
+   
+$.ajax({
+        type: 'POST',
+       // dataType: 'json',
+        url: '/match/requests',
+        success: function (respond) {
+          
+            $('.page-'+id).hide();
+
+         
+            //$('.model_data_saved').css('display','block');
+        
+            //locationReload= true;
+        },
+        data: {
+           interest:{user_to:id,activity:action}
+        }
+    
+    })
+ 
+})
+
+  })
+</script>
+<style>
+
+</style>

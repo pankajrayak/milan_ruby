@@ -1,0 +1,53 @@
+<% if @photos.exists?%>
+<div class="row">
+    <div class="col-md-6">
+        <h1 align="center"><%= @photos[0].user.firstname %>'s photos</h1>
+    </div>
+     <div class="col-md-6">
+       <div class="col-md-6">
+         <input type="button" name="edit" value="Edit" onclick="deletePhotos()">
+       </div>
+       <div class="col-md-6 showDeleteBtn">
+         <input type="button" name="cancle" value="Cancle" onclick="cancelDeletePhotos()">
+       </div>
+    </div>
+</div>
+   
+    <% count = 0%>
+    <% @photos.each_slice(4) do |photos| %>
+    <div class="row" style="width:100%;     padding-bottom:30px;">
+    <% photos.each do |photo| %>
+    <% count = count + 1 %>
+        <div class="col-md-3">
+        <%= link_to "X", photo_path(photo), method: :delete,data: { confirm: "Are you sure you want to delete the photo?"},class: "btn btn-xs btn-danger deletePhotos" %>
+            <%= image_tag photo.image.url, class:"img_preview img-responsive"%>
+        </div>
+        <% if count == @photos.count && count % 4 != 0 %>
+            <div class="col-md-3">
+                <%= render 'form' %>
+            </div>
+        <%end%>
+        <%end%>
+    </div>
+    <% if count == @photos.count && count % 4 == 0 %>
+     <div class="row" style="width:100%;     padding-bottom:30px;">
+        <div class="col-md-3">
+            <%= render 'form' %>
+        </div>
+    </div>
+        <%end%>
+    <style>
+    .img_preview{width:100%;}
+    .deletePhotos{display:none}
+    .showDeleteBtn{display:none}
+    
+    </style>
+    <%end%>
+<%else%>
+     <h1 align="center">No photos available</h1>
+      <div class="row" style="width:100%;     padding-bottom:30px;">
+        <div class="col-md-3">
+            <%= render 'form' %>
+        </div>
+    </div>
+<%end%>

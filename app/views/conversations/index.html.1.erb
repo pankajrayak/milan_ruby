@@ -1,0 +1,131 @@
+
+<div class='container'>
+<div class='adjust-h'></div>
+<ul class="list-group">
+ 
+ <% page_header "Your Conversations" %>
+
+
+
+        <div class="row">
+        <div class="col-sm-3 col-md-2">
+    
+        <p><button class='btn btn-danger btn-sm btn-block' id='composemsg'>Compose </button></p>
+         
+        </div>
+
+        
+    </div>
+<div class="row">
+<div class="col-sm-3 col-md-2">
+            <ul id="mailboxes-desktop" class="hidden-xs hidden-sm nav nav-pills nav-stacked">
+                <li class="active">
+                <%= link_to "<span class='badge pull-right'>#{@unreadmsg}</span> Inbox".html_safe,conversations_index_path(box:'inbox') %>
+
+                </li>
+                <li><a href="#">Starred</a></li>
+                <li><a href="#">Important</a></li>
+                <li> <%= link_to "<i class='badge pull-right'></i> Sent".html_safe,conversations_index_path(box:'sent') %></li>
+               
+                <li><a href="#"><span class="badge pull-right"></span>Drafts</a></li>
+            </ul>
+            <div id="mailboxes-mobile" class="hidden-md hidden-lg">
+                <button type="button" class="btn btn-block btn-default dropdown-toggle" data-toggle="dropdown">
+                    Mail boxes <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu btn-block" role="menu">
+                    <li class="active"><a href="#"><span class="badge pull-right">42</span> Inbox </a>
+                    </li>
+                    <li><a href="#">Starred</a></li>
+                    <li><a href="#">Important</a></li>
+                    <li><a href="#">Sent Mail</a></li>
+                    <li><a href="#">Drafts</a></li>
+                </ul>
+            </div>
+        </div>
+
+<div class="col-sm-9 col-md-10">
+    <div id="home">
+       <%= render partial: 'conversations/conversation', collection: @conversations %>
+    
+    </div>
+       
+  </div>
+
+<%# custom %>
+<div class="col-sm-9">
+  <% if @box == 'trash' %>
+    <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+                   data: {confirm: 'Are you sure?'} %></p>
+ 
+  <ul class="list-group">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </ul>  
+  <% end %>
+  <%= will_paginate %>
+</div>
+<%# custom end %>
+
+<div class="row">
+        <div class="col-md-5 col-md-push-6 main-chat">
+   <%= form_tag messages_path, method: :post do %>
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="accordion">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <a type="button" class="btn btn-default btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
+            <div class="panel-collapse collapse in" id="collapseOne" style="">
+      <div class="panel-body">
+                
+  <div class="form-group">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'recipients', 'Choose recipients' %>
+    <%= select_tag 'recipients', recipients_options, multiple: true, class: 'form-control' %>
+  </div>
+
+    </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        
+                        <span class="input-group-btn">
+                         <%= submit_tag 'Send', class: 'btn btn-sm btn-primary' %>
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                              <i class='fa fa-close'></i>  close</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <div>
+  
+    </div>
+    <script>
+    $(document).ready(function(){
+        $('.main-chat').hide();
+
+        $('#composemsg').on('click',function(){
+
+            $('.main-chat').toggle();
+        })
+  
+    });
+    </script>
+
+<%= will_paginate %>
+</div>

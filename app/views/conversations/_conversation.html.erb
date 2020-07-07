@@ -1,0 +1,28 @@
+<tr class="rowId<%=conversation.id%>">
+                        <td class="td-1"><input type="checkbox" class="chckDeleteConvertation allCheck" value="<%=conversation.id%>"></td>
+                        <td>
+                            <div id="home">
+                                
+                                <%if conversation.subject=="You Have Been Invited to Connect!" && conversation.participants[0].id == current_user.id%>
+                                    <h5><%= "#{conversation.participants[1].first_name} #{conversation.participants[1].last_name}"%></h5>
+                                    <span class="name"> <%= link_to raw(truncate(strip_tags(conversation.subject), :length => 50)) , conversations_receiveuser_path(id:conversation.participants[1],msgid: conversation.id) %> </span>
+                                <%elsif conversation.subject=="You Have Been Invited to Connect!" && conversation.participants[1].id == current_user.id%>
+                                    <h5><%= "#{conversation.participants[0].first_name} #{conversation.participants[0].last_name}"%></h5>
+                                    <span class="name"> <%= link_to "Your Invitation was sent!" , conversations_show_path(id:conversation) %> </span>
+                                <%else%>
+                                    <h5><%= "#{conversation.participants[1].first_name} #{conversation.participants[1].last_name}"%></h5>
+                                    <span class="name"> <%= link_to raw(truncate(strip_tags(conversation.subject), :length => 50)) , conversations_show_path(id:conversation) %> </span>
+                                <%end%>
+                                
+                                <br><span class="result-link"><%=  raw(truncate(strip_tags(conversation.last_message.body.html_safe), :length => 50)) %></span>
+                            </div>
+                        </td>
+                        <td>
+                        
+                        <span class=""><%= conversation.last_message.created_at.strftime("%-d %B, %Y %H:%M") %>
+                        </td>
+                    </tr>
+
+
+
+

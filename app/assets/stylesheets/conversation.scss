@@ -1,0 +1,30 @@
+.module {
+    background: white;
+    border: 1px solid #ccc;
+    margin: .2%;
+    > h2 {
+      padding: 1rem;
+      margin: 0 0 0.5rem 0;
+    }
+    > p {
+      padding: 0 1rem;
+    }
+  }
+  
+  .stripe-5 {
+    padding: 5px;
+    color: white;
+    background: linear-gradient(
+      to bottom,
+      #5d9634,
+      #5d9634 50%,
+      #538c2b 50%,
+      #538c2b
+    );
+    background-size: 100% 20px;
+  } 
+
+  span.name {
+    font-family: sans-serif;
+    font-weight: 600;
+}

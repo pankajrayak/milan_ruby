@@ -1,0 +1,2 @@
+class EducationConcentration < ApplicationRecord
+end

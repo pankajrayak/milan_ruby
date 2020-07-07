@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%="#{profile.user.first_name} #{profile.user.last_name}"%> </h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class=" col-md-9 col-lg-9 ">
+                        <table class="table table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                    <td><%=profile.dob %></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Gender</td>
+                                    <td><%= profile.gender %></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Job status</td>
+                                    <td><%=profile.job_status %></td>
+                                </tr>
+                                <tr>
+                                    <td>Height </td>
+                                    <td><%= user_height %></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Marital Status</td>
+                                    <td><%=profile.marital_status %></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Education Level</td>
+                                    <td><%=profile.education_level %></td>
+
+                                </tr>
+                                <tr>
+                        <td>Country</td>
+                        <td><%= profile.country %></td>
+                      </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

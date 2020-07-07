@@ -1,0 +1,76 @@
+                <h2 class="fs-title"><%= t('labels.step_three')%></h2>
+                
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="diet"><%= profile.label :diet, class:'label blk'%></lable>
+                            </h2>
+                            <%# <select id="maritalStatusForPartnerPreferences" class="form-control">
+                                <option selected="" value="">Select Marital Status</option>
+                                <option value="Self">Single</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select> %>
+                            <select class="form-control" name="diet" id="diet"><option selected="selected" value="">Select your diet</option>
+                                <option value="Diet one">Diet one</option>
+                                <option value="Diet two">Diet two</option>
+                                <option value="Diet three">Diet three</option>
+                                <option value="Diet four">Diet four</option>
+                            </select>
+                           
+                            
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="row">
+                        <div class="">
+                            <h4>
+                                <lable for="Do you smoke?"><%= profile.label :smoke, class:'label blk'%></lable>
+                                </h4>
+                                <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-smoke" type="radio" value="Yes" name="profile[dys]" id="profile_dys_yes">
+                                <label class="form-check-label" for="inlineRadio1"><%= t('labels.yes')%></label>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-check-input do-you-smoke" type="radio" value="Only socially" name="profile[dys]" id="profile_dys_os"> 
+                                <label class="form-check-label" for="inlineRadio2"><%= t('labels.social')%></label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-smoke" type="radio" value="No" name="profile[dys]" id="profile_dys_no"> 
+                                <label class="form-check-label" for="inlineRadio2"><%= t('labels.no')%></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="">
+                            <h4>
+                                <lable for="gender">Do you drink?
+                                    
+                                </lable>
+                                </h4>
+                                <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-drink" type="radio" value="Yes" name="profile[dyd]" id="profile_dyd_yes">
+                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input class="form-check-input do-you-drink" type="radio" value="Only socially" name="profile[dyd]" id="profile_dyd_os"> 
+                                <label class="form-check-label" for="inlineRadio2">Only socially</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="form-check-input do-you-drink" type="radio" value="No" name="profile[dyd]" id="profile_dyd_no"> 
+                                <label class="form-check-label" for="inlineRadio3">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />

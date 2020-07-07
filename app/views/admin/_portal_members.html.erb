@@ -1,0 +1,29 @@
+<div id="admin_grid" style="margin:100px;"></div>
+<script>
+    //define dataModel
+    var url = window.location.href;
+    var arr = url.split("=");
+    var tab = arr[1];
+    var state ="all";
+    if(tab){
+        $(".card.regional-content-header ul li").removeClass("active");
+        if(tab=="requests"){
+           state = "awaiting_review";
+           $(".new-request").addClass("active");
+        }else if(tab=="review"){
+            state = "being_reviewed";
+             $(".in-review-request").addClass("active");
+        }
+        else if(tab=="current"){
+             $(".current-request").addClass("active");
+            state = "accepted";
+        }
+        else if(tab=="deactivate"){
+            state = "rejected";
+            $(".deactivated-request").addClass("active");
+        }
+        
+    } 
+    createAdminGrid(state,null); 
+     
+</script>  

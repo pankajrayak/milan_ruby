@@ -1,0 +1,88 @@
+
+
+
+
+<div class="panel panel-default">
+  <%# <div class="panel-heading"><%= @conversation.subject %</div> %>
+  <div class="panel-body">
+    <div class="messages">
+      <% @conversation.receipts_for(current_user).each do |receipt| %>
+      
+          <% message = receipt.message %>
+
+        <div> 
+          <%# <%= link_to 'Delete',url_for(action: :destroy, id: message.id),method: :delete, data: {confirm: "Are you sure?"} %>
+            
+        </div> 
+        <div class="container">
+          <%= gravatar_for message.sender, 45, message.sender.name %>
+            <h4> <%= @conversation.subject %></h4>
+            <p> <%= message.body.html_safe %></p>
+            <span class="time-right"><%= message.created_at.strftime("%H:%M") %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%# <div class="container darker">
+  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div> %>
+
+<style>
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
+</style>
+
+

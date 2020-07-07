@@ -1,0 +1,10 @@
+<p><%= I18n.t 'milan.dear', name: @resource.first_name %></p>
+<%@link = link_to t('.confirm_account_link'), ("#{ENV['API_URL']}auth/confirmation?config=default&confirmation_token=#{@token}&redirect_url=#{ENV['CONFIRM_URL']}") %>
+<%# <%= (I18n.t 'milan.register_msg',link: @link).html_safe  <br/> %>
+<p>Thank you for registering with Milan! Please click on the following link to confirm your account.</p>
+<p><%=@link.html_safe%> </p>
+<p>Upon confirmation of your account, your profile will be placed under review in accordance with our terms and conditions. We will reach out to you if we require further information. The approximate review time is 24-72 hours.</p>
+<span><%= I18n.t 'milan.thanks' %>!</span><br/>
+<span><%= I18n.t 'milan.admin' %></span><br/>
+
+<%= image_tag "#{ENV['FRONTEND_URL']}images/logo.png" %>

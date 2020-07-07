@@ -1,0 +1,33 @@
+
+<div class="profile-form" style="margin:75px!important;">
+<h1>Editing Profile</h1>
+
+<div class="">
+  <%= form_with(model: @profile,url:"/profiles/#{@profile.id}",local: true) do |form| %>
+  <%= fields_for @profile.user do |user|%>
+    <% if  @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize( @profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+        <ul>
+          <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= render 'devise/registrations/personal_information', :profile => form,:f => user   %>
+
+    <%if (@profile.id.nil?)%>
+      
+    <%else%>
+      <div class="actions">
+        <input type="button" name="commit" value="Update Account" class="btn btn-sm btn-primary" onclick="validateUserProfileForm()" data-disable-with="Create Account">
+      </div>
+    <%end%>  
+  <%end%>  
+  <% end %>
+
+</div>
+
+<%= link_to 'Back', @profile %> 
+</div>

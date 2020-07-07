@@ -1,0 +1,65 @@
+en:
+  profiles: 
+    profile_info:
+      title: "Welcome to your Dashboard"
+  admin:
+    inbox:
+      sent_invite: "You Invitation was sent!"
+      connect_invite: "You Have Been Invited to Connect!"
+      deactivated: "Sorry! your profile is deactivated. Use our help assistance to contact Administrator for further enquiry"
+      inactive: "Sorry! your profile is not active. Use our help assistance to contact Administrator for further enquiry"
+      restricted: "You do not have permission to view this page."
+  index:
+    good_one: "i like it"
+  update_profile_workflow:
+    accept: "User successfully accepted"
+    reject: "User successfully rejected"
+    request: "User successfully requested"
+    spam: "User Reported as Spam"
+  interest:
+    request: "%{name} has sent connection request"
+    accept: "%{name} has accepted your invitation"
+    close: "%{name} is no longer connected with you"
+    cancle: "%{name} is no longer connected with you"
+    reject: "%{name} is no longer connected with you"
+    report: "Reported as spam"
+  inbox:
+    sent_invite: "You Invitation was sent!"
+    connect_invite: "You Have Been Invited to Connect!"
+    deactivated: "Sorry! your profile is deactivated. Use our help assistance to contact Administrator for further enquiry"
+    inactive: "Sorry! your profile is not active. Use our help assistance to contact Administrator for further enquiry"
+    restricted: "You do not have permission to view this page."
+  add:
+    sent_invite: "You Invitation was sent!"
+    connect_invite: "You Have Been Invited to Connect!"
+  delete_active_user: 
+    member_deactivate: "User profile successfully deactivated"  
+    reg_deactivate: "Your profile has been deactivated by your regional manager"
+    gbl_deactivate: "Your profile has been deactivated by your adminstrator"
+    member_reactivate: "User profile successfully reactivated"
+    reg_reactivate: "Your profile has been reactivated by your regional manager"
+    gbl_reactivate: "Your profile has been reactivated by your adminstrator"
+    member_delete: "User profile successfully deleted"
+    reg_delete: "Your profile has been deleted by your regional manager"
+    gbl_delete: "Your profile has been deleted by your adminstrator"
+    wrong: "Something went wrong"
+
+  application:
+    after_sign_in_path_for:
+      deactivated: "Sorry! your profile is deactivated. Use our help assistance to contact Administrator for further enquiry" 
+      inactive: "Sorry! your profile is not active. Use our help assistance to contact Administrator for further enquiry"
+      restricted: "You do not have permission to view this page."
+  conversations:
+    index:   
+      connect_invite: "You Have Been Invited to Connect!"
+      sent_invite: "You Invitation was sent!"
+    reply:
+      reply_sent: 'Reply sent'
+    destroy:
+      trash: 'The conversation was moved to trash.'
+    restore:
+      restored:  'The conversation was restored.'
+    empty_trash:
+      clean: 'Your trash was cleaned!'
+  photos:
+    request: "View Photo Request"

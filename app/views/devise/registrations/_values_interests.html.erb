@@ -1,0 +1,63 @@
+                <h2 class="fs-title"><%= t('labels.step_five')%></h2>
+                <h3 class="fs-subtitle"><%= t('labels.interest_info')%></h3>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="values">Values </lable>
+                            </h2>
+                            <select id="values" class="form-control">
+                                <option selected="" value="">Select Values</option>
+                                <option value="Self">values</option>
+                                <option value="Option 2">Option 2</option>
+                                <option value="Option 3">Option 3</option>
+                                <option value="Option 4">Option 4</option>
+                            </select>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="interests"><%= profile.label :interest, class:'label blk'%></lable>
+                            </h2>
+                            <%= profile.select(:interest,options_for_select([['', ''],['Acting', 'Acting'], ['Baking', 'Baking'], ['Calligraphy', 'Calligraphy'], ['Creative writing', 'Creative writing'], ['Crossword', 'Crossword'], ['Dance', 'Dance'], ['Ice skating', 'Ice skating'], ['Gun Smithing', 'Gun Smithing'], ['Gaming', 'Gaming']], ""),{},multiple:true,class:"form-control required",id:"user_interest") %> 
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="profile_facebook"><%= profile.label :facebook, class:'label blk'%></lable>
+                            </h2>
+                            <%= profile.text_field :facebook,class: "form-control" , placeholder: "Facebook url"%>
+                            <small id="facebookHelp" class="form-text text-muted">Enter a link to a facebook profile page.</small>
+                    </div>
+                </div>
+
+                 <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="linkedIn"><%= profile.label :linkedin, class:'label blk'%> </lable>
+                            </h2>
+                            <%= profile.text_field :linkedin ,class: "form-control" , placeholder: "LinkedIn url"%>
+                            <small id="linkedInHelp" class="form-text text-muted">Enter a link to a linkedIn profile page.</small>
+                    </div>
+                </div> 
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="instagram"><%= profile.label :instagram, class:'label blk'%></lable>
+                            </h2>
+                             <%= profile.text_field :instagram ,class: "form-control" , placeholder: "Instagram url"%>
+                            <small id="instagramHelp" class="form-text text-muted">Enter a link to a instagram profile page.</small>
+                    </div>
+                </div>
+                <div class=row>
+                    <div class="form-group">
+                        <h4>
+                            <lable for="aboutMe"><%= profile.label :about_me, class:'label blk'%></lable>
+                            </h2>
+                            <%= profile.text_area :about_me, id: :profile_about_me,class: "form-control" , placeholder: "Write about yourself" %>
+                            <small id="aboutMeHelp" class="form-text text-muted">Tell other members about yourself.</small>
+                    </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                <input type="button" name="next" class="next action-button" value="Next" />

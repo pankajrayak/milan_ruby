@@ -1,0 +1,76 @@
+
+
+
+<div class="container" style="margin:-30px;">
+  <%= link_to "Add Regional Manager",new_admin_path,class:"btn btn-info" %>
+  <h2>User List</h2>
+
+    <%= form_tag(admin_index_path, method: :get,class:'form-inline') do %>
+    <div class="form-group">
+    <label>First Name</label>
+   <%= text_field_tag :term, params[:term],class:'form-control' %>
+  </div>
+   <div class="form-group">
+    <%= label_tag('Gender') %> 
+  <%= select_tag :gender, options_for_select(['Male','Female'],:selected => params['gender']),{include_blank:true,class:'form-control'} %>
+  </div>
+   <div class="form-group">
+  <%= label_tag('Age') %>
+<%= select_tag :age, options_for_select( ['18','24','30','40'],:selected => params['age']),{include_blank:true,class:'form-control'} %>
+</div>
+ <div class="form-group">
+ <%= label_tag('Request') %>
+<%= select_tag :request, options_for_select(['old','new'],:selected => params['request']),{include_blank:true,class:'form-control'} %>
+</div>
+ <div class="form-group">
+ <br>
+ <%= submit_tag 'Search', {class:'btn btn-sm btn-success form-control',name: nil} %>
+<%= link_to "Clear Search",admin_index_path, class:'btn btn-sm btn-primary form-control'%>
+</div>
+<% end %>
+   
+
+
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+      <% @userlist.each  do |items| %>
+      <%user_id = "user_#{1 + items.id.to_i}"%>
+      <tr>
+        <td><%= items.user.email %></td>
+        <td><%= items.user.first_name %></td>
+        <td><%= items.user.last_name %></td>
+        <td>
+
+        <%= link_to "show Profile",profile_path(:id=> items.id),class:"btn btn-info" %>
+         <%# <button type="button" class="btn btn-info" data-toggle="modal" onclick="showMyModel(<%= items.id%>
+        </td>
+
+      
+      </tr>
+      <% end %>
+   
+     
+    </tbody>
+  </table>
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @userlist %>
+  </div>
+  <%= will_paginate @userlist, :container => false %>
+</div>
+</div>
+
+        </div>
+     </div>
+  </div>
+ 

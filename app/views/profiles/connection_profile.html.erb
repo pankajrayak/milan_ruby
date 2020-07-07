@@ -1,0 +1,239 @@
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<div class="container">
+<div class="row">
+  <div class="col-md-2">
+  <a class="btn btn-success btn-block" href="/match/show">Back to all connections</a>
+  </div>
+  <div class="col-md-6">
+  </div>
+  <div class="col-md-2">
+  <a class="btn btn-success btn-block" href="match/show">Prev Connection</a>
+  </div>
+  <div class="col-md-2">
+  <a class="btn btn-success btn-block" href="match/show">Next Connection</a>
+  </div>
+</div>
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">   
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title user-name-<%=@profile.user.id%>"><%= @profile.user.first_name%> <%= @profile.user.last_name%></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<%=@photo_url%>" class="img-circle img-responsive"> </div>
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>About me:</td>
+                        <td><%= @profile.about_me %></td>
+                      </tr>
+                      <tr>
+                        <td>Interest:</td>
+                        <td> <%= @profile.interest %></td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td><%= @profile.dob %></td>
+                      </tr>
+                   
+                      <tr>
+                        <td>Gender</td>
+                        <td><%= @profile.gender %></td>
+                      </tr>
+                      <tr>
+                        <td>Facebook Url</td>
+                         <td><%= link_to @profile.facebook,"http://#{@profile.facebook}", target: :_blank%></td>
+                      </tr>
+                      <tr>
+                        <td>Instagram Url</td>
+                        <td><%= link_to @profile.instagram,"http://#{@profile.instagram}", target: "_blank" %></td>
+                      </tr>
+                      <tr>
+                        <td>LinkedIn Url</td>
+                        <td><%= link_to @profile.instagram,"http://#{@profile.instagram}", target: "_blank" %></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:<%=@profile.user.email %>"><%=@profile.user.email %></a></td>
+                      </tr>
+                      <tr>
+                        <td>Job status</td>
+                       <td><%= @profile.job_status %></td>
+                      </tr>
+                      <tr>
+                        <td>Height </td>
+                       <td><%= @profile.height %></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                         <td><%= @profile.phone_number %></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Mobile Number</td>
+                         <td><%= @profile.mobile_number %></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Marital Status</td>
+                         <td><%= @profile.marital_status %></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Community</td>
+                         <td><%= @profile.community %></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Community</td>
+                         <td><%= @profile.community %></td>
+                           
+                      </tr>
+                       <tr>
+                        <td>Education Level</td>
+                         <td><%= @profile.education_level %></td>
+                           
+                      </tr>
+                      <tr>
+                        <td>Have Children</td>
+                         <td><%= @profile.have_children %></td>
+                           
+                      </tr>
+                     <tr>
+                        <td>Country</td>
+                        <td><%= @profile.country %></td>
+                      </tr>
+                      <tr>
+                        <td>State</td>
+                        <td><%= @profile.state %></td>
+                      </tr>
+                      <tr>
+                        <td>City</td>
+                        <td><%= @profile.city %></td>
+                      </tr>
+                      <tr>
+                       <td>Profile for</td>
+                       <td><%= @profile.member_relationship %></td>
+                     </tr>
+                      <tr>
+                       <td>Region</td>
+                       <td><%=  @profile.user.region  %></td>
+                     </tr>
+                      <tr>
+                       <td>Religion</td>
+                      <td><%= @profile.religion %></td>
+                     </tr>
+                    </tbody>
+                  </table>
+                  <button type="button" class="btn btn-info btn-block send-message" id="User_id_<%=@profile.user.id%>" onclick="sendMessage(<%=@profile.user.id%>)"> <span class="">Send Message</span></button>
+                  <%# <a class="" href="#">I am no longer interested</a>
+                  <a class="" href="#">Report profile</a> %>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                  <% if  @optionbtn %>
+                    <div class="box-body">
+                      <h2>Comments:</h2>
+                      <ul>
+                        <%@commentsection= WorkflowStatus.where(:user_id =>@profile.user.id)%>
+                        <% if @commentsection.any?%>
+                          <% @commentsection.each do |m| %>
+                            <li><%= m.comment %></li>
+                          <% end %>
+                        <% end %>
+                      <ul>   
+                    </div>
+                    <% if @profile.profile_state =='being_reviewed' %>
+                      <%= form_for :WorkflowStatus, url: {action: "add",controller: 'admin'}, html: {class: "nifty_form"} do |f| %>
+                        <%= f.hidden_field :id, :value => @profile.id  %>
+                        <label>Comment: </label> 
+                        <%= f.hidden_field :module,:value => "profile"  %>
+                        <%= f.hidden_field :user_id,:value => @profile.user.id  %>
+                        <%= f.text_area :comment, size: "30x4" ,class: "form-control"%>
+                        <%= f.submit "accept",class:"btn btn-success" %>
+                        <%= f.submit "reject",class:"btn btn-danger " %>
+                        <%= f.submit "additional" ,class:"btn btn-info"%>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Modal for send message-->
+ <%= render 'layouts/sendmessage' %>
+ 
+<script>
+satrt();
+    $(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+       
+    });
+});
+</script>
+<style>
+.margin-top{
+  margin-top:5px;
+}
+</style>
+
+
+
+
+
+
+
+

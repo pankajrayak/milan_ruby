@@ -1,0 +1,88 @@
+<div class="margin-top" style="margin-top: 25px;margin: 40px;">
+
+<div>
+<% if @photos.exists?%>
+<div class="row">
+    <div class="col-md-6">
+        <h1 align="center"><%= @photos[0].user.first_name %>'s photos</h1>
+    </div>
+     <div class="col-md-6">
+       <div class="col-md-6 ">
+              <span class="badge">
+                      <%if @profile_user.photo%>   
+                              Visible
+                          <% else %>
+                              Hidden
+                      <%end%>
+              </span>
+      </div>
+      <div class="col-md-6 ">
+            <% if @admin==false %> 
+            <input type="button" name="edit" value="Edit" onclick="deletePhotos()" class="photoEditBtn btn">
+            <input type="button" name="cancel" value="Cancel" onclick="cancelDeletePhotos()" class="photoCancelBtn btn">
+            <%= link_to "Back to user's profile", profile_path(@profile_user), class: "btn btn-primary btn-photo"%>
+            <%else%>
+            <%= link_to "Back to user's profile", profile_path(@profile_user), class: "btn btn-primary btn-photo"%>
+            <%end%>
+       </div>
+    </div>
+</div>
+   
+    <% count = 0%>
+    <% @photos.each_slice(4) do |photos| %>
+    <div class="row" style="width:100%;     padding-bottom:30px;">
+    <% photos.each do |photo| %>
+    <% count = count + 1 %>
+        <div class="col-md-3">
+        <%= link_to "Delete", photo_path(photo), method: :delete,data: { confirm: "Are you sure you want to delete the photo?"},class: "btn btn-xs btn-danger deletePhotos" %>
+            <% if @admin ==  true %> 
+            <% verifyUrl = "/rejectphoto/#{photo.id}?uid=#{photo.user_id}&&result=true"%>
+           <% rejectUrl = "/rejectphoto/#{photo.id}?uid=#{photo.user_id}&&result=false"%>
+            <% if photo.workflow_state ==  'new' %> 
+             <%= link_to "Verify", photo_path(photo, :value => "accept"), method: :put,class: "btn btn-xs" %>
+            <%= link_to "Reject", photo_path(photo, :value => "reject"), method: :put,class: "btn btn-xs" %>
+              <%end%>
+           
+            <%end%>
+            <label><%=photo.photo_for%> Photo</label>
+          <% if photo.workflow_state ==  'new' && @admin ==  false %> 
+            <label>Picture is under review</label>
+            <%end%>
+             <% if photo.workflow_state ==  'rejected' && @admin ==  false%> 
+            <label>Picture is rejected</label>
+            <%end%>
+            
+
+            <%= image_tag photo.photo.url, class:"img_preview img-responsive"%>
+        </div>
+        <% if count == @photos.count && count % 4 != 0 && @admin == false%>
+            <div class="col-md-3">
+                <%= render 'form' %>
+            </div>
+        <%end%>
+        <%end%>
+    </div>
+    <% if count == @photos.count && count % 4 == 0 && @admin == false%>
+     <div class="row" style="width:100%;padding-bottom:30px;">
+        <div class="col-md-3">
+            <%= render 'form' %>
+        </div>
+    </div>
+        <%end%>
+    <style>
+    .deletePhotos{display:none}
+    .photoCancelBtn{display:none}
+    
+    </style>
+    <%end%>
+<%else%>
+ <h1 align="center">No photos available</h1>
+<% if @admin == false%>
+    
+      <div class="row" style="width:100%;padding-bottom:30px;">
+        <div class="col-md-3">
+            <%= render 'form' %>
+        </div>
+    </div>
+    <%end%>
+<%end%>

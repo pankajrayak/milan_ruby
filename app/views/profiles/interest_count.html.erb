@@ -1,0 +1,338 @@
+
+<div class="container min-height">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Nav tabs -->
+      <div class="card">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#connections" aria-controls="Connections" role="tab" data-toggle="tab">Connections <% if @connections.present? %> <span class="badge"><%= @connections.count %></span><%end%></a>
+          </li>
+          <li role="presentation">
+            <a href="#rejectedInvitation" aria-controls="Rejected Invitation" role="tab" data-toggle="tab">Recent Activity</a>
+          </li>
+           <li role="presentation">
+            <a href="#activity" aria-controls="Recent Activity" role="tab" data-toggle="tab">Recent Activity</a>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="connections">
+            <% if @connections.present? %>
+              <% @connections.each do |f|%>
+                <% @user_info=  User.find_by_id(f.user_to)%>
+                <div class="row" style="background: aliceblue;border-radius: 20px;margin-top: 20px!important;">
+              <div class=" col-md-4 col-lg-6" align="center">
+                <img alt="User Pic" src="/uploads/photo/photo/16/Smith.jpg" class="img-circle img-responsive">
+                </div>
+                <div class=" col-md-8 col-lg-6">
+                  <div class="well profile">
+                    <div class="col-sm-12">
+                      <div class="col-xs-12 col-sm-8 verticalLine">
+                        <h2 class="user-name-<%=@user_info.id%>"><%= "#{@user_info.first_name} #{@user_info.last_name}" %></h2>
+                        <hr>
+                          <p>
+                            <strong>Height: </strong> <%= "#{@user_info.profile.height}" %> 
+                          </p>
+                          <p>
+                            <strong>Religion : </strong> <%= "#{@user_info.profile.religion}" %> 
+                          </p>
+                          <p>
+                            <strong>Education: </strong> <%= "#{@user_info.profile.education_level}" %>  
+                          </p>
+                          <p>
+                            <strong>Job Status: </strong><%= "#{@user_info.profile.job_status}" %>   
+                          </p>
+                          <p>
+                            <strong>Areas of Interest: </strong> <%= "#{@user_info.profile.interest}" %>  
+                          </p>
+                          <br>
+                            <div class="">
+                              <a href="http://<%=@user_info.profile.facebook%>" target="_blank"><i class="fa fa-facebook fa-fa-icon-size" aria-hidden="true"></i> &nbsp &nbsp </a>
+                              <a href="http://<%=@user_info.profile.instagram%>" target="_blank"><i class="fa fa-instagram fa-fa-icon-size" aria-hidden="true"></i>&nbsp &nbsp  </a>
+                              <a href="http://<%=@user_info.profile.instagram%>" target="_blank"><i class="fa fa-linkedin fa-fa-icon-size" aria-hidden="true"></i> &nbsp&nbsp </a>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 text-center ancor-white">
+                            <div class="row emphasis">
+                              <%= link_to "View Profile", connectionprofile_path(:id => @user_info.profile.id), class: "btn btn-info btn-block"%>
+                            </div>
+                            <div class="row emphasis">
+                              <h2></h2>
+                              <button type="button" class="btn btn-info btn-block send-message" id="User_id_<%=@user_info.id%>" onclick="sendMessage(<%=@user_info.id%>)"> <span class="">Send Message</span></button>
+                            </div>
+                            <div class="row emphasis"></div>
+                              <a class="" href="#" style="color: #5bc0de!important;">I am no longer interested</a><br>
+                              <a class="" href="#" style="color: #5bc0de!important;">Report profile</a>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  text-center"></div>
+                      </div>
+                    </div>
+                    <p>
+                      <strong>About Me: </strong> <%=  @user_info.profile.about_me %>
+                    </p>
+                  </div>
+              <%end%>
+            <%else%>
+              <br>
+              <br>
+              <h2> No Connections</h2>  
+            <%end%>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="rejectedInvitation">
+            <% if @rejected_invitation.present? %>
+              <% @rejected_invitation.each do |f|%>
+                <% @user_info=  User.find_by_id(f.user_to)%>
+                <div class="row" style="background: aliceblue;border-radius: 20px;margin-top: 20px!important;">
+              <div class=" col-md-4 col-lg-6" align="center">
+                <img alt="User Pic" src="/uploads/photo/photo/16/Smith.jpg" class="img-circle img-responsive">
+                </div>
+                <div class=" col-md-8 col-lg-6">
+                  <div class="well profile">
+                    <div class="col-sm-12">
+                      <div class="col-xs-12 col-sm-8 verticalLine">
+                        <h2><%= "#{@user_info.first_name} #{@user_info.last_name}" %></h2>
+                        <hr>
+                          <p>
+                            <strong>Height: </strong> <%= "#{@user_info.profile.height}" %> 
+                          </p>
+                          <p>
+                            <strong>Religion : </strong> <%= "#{@user_info.profile.religion}" %> 
+                          </p>
+                          <p>
+                            <strong>Education: </strong> <%= "#{@user_info.profile.education_level}" %>  
+                          </p>
+                          <p>
+                            <strong>Job Status: </strong><%= "#{@user_info.profile.job_status}" %>   
+                          </p>
+                          <p>
+                            <strong>Areas of Interest: </strong> <%= "#{@user_info.profile.interest}" %>  
+                          </p>
+                          <br>
+                            <div class="">
+                              <a href="http://<%=@user_info.profile.facebook%>" target="_blank"><i class="fa fa-facebook fa-fa-icon-size" aria-hidden="true"></i> &nbsp &nbsp </a>
+                              <a href="http://<%=@user_info.profile.instagram%>" target="_blank"><i class="fa fa-instagram fa-fa-icon-size" aria-hidden="true"></i>&nbsp &nbsp  </a>
+                              <a href="http://<%=@user_info.profile.instagram%>" target="_blank"><i class="fa fa-linkedin fa-fa-icon-size" aria-hidden="true"></i> &nbsp&nbsp </a>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 text-center ancor-white">
+                            <div class="row emphasis">
+                              <%= link_to "View Profile", connectionprofile_path(:id => @user_info.profile.id), class: "btn btn-info btn-block"%>
+                            </div>
+                            <div class="row emphasis">
+                              <h2></h2>
+                              <%# <p></p>
+                              <a class="btn btn-info btn-block" href="/conversations">Send Message</a> %>
+                            </div>
+                            <div class="row emphasis"></div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12  text-center"></div>
+                      </div>
+                    </div>
+                    <p>
+                      <strong>About Me: </strong> <%=  @user_info.profile.about_me %>
+                    </p>
+                  </div>
+              <%end%>
+            <%else%>
+            <br>
+            <br>
+              <h2> No Recent Activity</h2>    
+            <%end%>
+          
+          </div>
+          <div role="tabpanel" class="tab-pane" id="activity">
+          
+
+          <div id="activitylog">
+          <% @notifications.each do |f| %>
+          <%= render :partial => 'notifications/users/follower', :locals => {:notification => f} %>
+          <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal for send message-->
+ <%= render 'layouts/sendmessage' %>
+
+<script>
+satrt();
+  $(document).ready(function(){
+
+
+
+$('.connect-profile').on('click',function(){
+
+    
+var id=$(this).attr('id');
+  
+  var action='';
+ var className= $(this).attr('class');
+   if(className.indexOf('reject') !== -1) {
+
+       action='reject'
+
+   }
+   else
+   {
+        action='accept'
+   }
+   
+$.ajax({
+        type: 'POST',
+       // dataType: 'json',
+        url: '/match/requests',
+        success: function (respond) {
+          
+            $('.page-'+id).hide();
+
+         
+            //$('.model_data_saved').css('display','block');
+        
+            //locationReload= true;
+        },
+        data: {
+           interest:{user_to:id,activity:action}
+        }
+    
+    })
+ 
+})
+
+  })
+</script>
+<style>
+  .min-height{
+    min-height: 527px;
+  }
+  .nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+
+.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+
+<%# Connection profile css %>
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+.profile 
+{
+    min-height: 355px;
+    display: inline-block;
+    }
+figcaption.ratings
+{
+    margin-top:20px;
+    }
+figcaption.ratings a
+{
+    color:#f1c40f;
+    font-size:11px;
+    }
+figcaption.ratings a:hover
+{
+ 
+    }
+.divider 
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+    }
+.emphasis 
+{
+    border-top: 4px solid transparent;
+    }
+.emphasis:hover 
+{
+    
+    }
+.emphasis h2
+{
+    margin-bottom:0;
+    }
+span.tags 
+{
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+    }
+.dropdown-menu 
+{
+    background-color: #34495e;    
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 250px;
+    margin-left: -125px;
+    left: 50%;
+    }
+.dropdown-menu .divider 
+{
+    background:none;    
+    }
+.dropdown-menu>li>a
+{
+    color:#f5f5f5;
+    }
+.dropup .dropdown-menu 
+{
+    margin-bottom:10px;
+    }
+.dropup .dropdown-menu:before 
+{
+    content: "";
+    border-top: 10px solid #34495e;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    z-index: 10;
+    }
+   
+ .verticalLine {
+    /* border-right: 1px solid #8e8e8e; */
+    border: 0;
+    border-right: 1px solid #b9b0b0!important;
+}
+ hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #4c4343!important;
+   
+}
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f0f8fe;
+    border: 0px solid #e3e3e3;
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); */
+}
+.fa-fa-icon-size{
+    font-size: 35px!important;
+}
+a .fa:hover{
+    background-color: gray!important;
+}
+.ancor-white a{
+    color: white!important;
+}
+</style>

@@ -1,0 +1,94 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"style="float: left; padding: 0px; font-size: 18px; line-height: 20px; height: auto; margin-left: 0px;"><img alt="Matrimonial" src="https://www.freelogoservices.com/api/main/images/1j+ojVVCOMkX9Wyrexe4hGfU37LC9UoQxkeciyg3aD1fqVY4nSQugfdr8fUzIwtFvwhKxkECc8M...jiZzV4ETjg==" class="" style="max-width: 100px;"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse  mrig-nav" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li>
+      <%if current_user.present?%>
+        <div class="site-dropdown">
+          <button class="dropbtn"><i class="material-icons">sms</i> <span class="badge"><%=@popup_no%></span></button>
+          <div class="dropdown-content">
+          <% @user_notification.each do |notification| %>
+          <a href="/match/profile?<%= "n_id=#{notification.id}"%>"> 
+          <%= render partial: "notifications/invitations/#{notification.action}", locals: {notification: notification} %>
+            </a>
+          <%end %>
+          <!--  new notification will be placed here with the help of coffeescript-->
+          </div>
+        </div>
+       <%end%>
+      </li>
+      <li>
+      <%= link_to '<i class="glyphicon glyphicon-earphone"></i>'.html_safe, pages_contact_us_path%>
+      </li>
+        <% if user_signed_in? && current_user.state=='active' %>
+         <% if @show_options %>
+         <li> <%= link_to '<i class="glyphicon glyphicon-home" ></i>'.html_safe , admin_index_path %> </li>
+        <% else %>
+         <li> <%= link_to '<i class="glyphicon glyphicon-home" ></i>'.html_safe , profiles_path %> </li>
+       <%end%>
+    <% if @show_icons %>
+       <li><%= link_to "<span class='glyphicon glyphicon-pencil'></span>".html_safe, edit_user_registration_path %>
+      </li>
+        
+         <li>
+         <%= link_to '<i class="glyphicon glyphicon-th-large"></i>'.html_safe, match_index_path  %>
+      </li>
+     
+        <li>
+         <%= link_to '<i class="glyphicon glyphicon-search"></i>'.html_safe, search_match_index_path  %>
+       </li>
+        
+        
+        <li> <%= link_to '<i class="glyphicon glyphicon-envelope" ></i>'.html_safe, conversations_index_path %></li>      
+      
+          <% end %>
+
+            <li><%= link_to "Log out", destroy_user_session_path, method: :get %></li>
+        <%else%>
+          <li class="new-acc"><%= t('home.account')%></li>
+          <li class="vertical-line-break"> <button class="btn btn-default login-model" >Sign In</button></li>
+          <li> <%= link_to "Register" , new_user_registration_path,class: "btn btn-primary btn-lg" %> </li>
+        <%end%>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<style>
+*,
+body{ margin:0!important; padding:0;}
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+.vertical-line-break{
+  border-right: 1px solid #b1a3a3;
+    padding-right: 10px;
+    margin-right: 10px!important;
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #5d5e5f;
+    border-color: #5d5e5f;
+}
+
+.matrimonial .mrig-nav .nav{ padding:15px 0 0 0; }
+.matrimonial .mrig-nav .nav > li > a { padding: 4px 8px!important;line-height: normal; border-radius: 2px;}
+.new-acc{ padding:8px 10px 0 0;}
+.navbar-default {
+    background-color: #dedede;
+    border-color: #e7e7e7;
+}
+</style>

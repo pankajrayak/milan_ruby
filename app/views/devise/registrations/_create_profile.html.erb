@@ -1,0 +1,60 @@
+<h2 class="fs-title"> <%= t('labels.step_one')%> </h2>
+<div class=row>
+    <div class="form-group">
+        <h4>
+            <lable for="user_email"><%= f.label :email,class:'label blk' %>  <i>*</i>
+               
+            </lable>
+            </h2>
+            <%= f.email_field :email, autofocus: false,id:'user_email', autocomplete: "email", class:'form-control required',placeholder:"Enter email" %>
+            <small id="emailHelp" class="form-text text-muted"><%= t('labels.noshare')%></small>
+    </div>
+</div>
+<div class=row>
+    <div class="form-group">
+        <h4>  
+            <lable for="user_password"> <%= t('password.create') %>
+                <i>*</i>
+            </lable>
+            </h2>
+            <%= f.password_field :password, autocomplete: "off",class:'form-control required',placeholder:"Password" %>
+            <small id="passwordHelp" class="form-text text-muted"> <%= t('password.length') %></small>
+    </div>
+</div>
+<div class=row>
+    <div class="form-group">
+        <h4>
+            <lable for="user_password_confirmation"><%= t('password.confirm') %>
+                <i>*</i>
+            </lable>
+            </h2>
+            <%= f.password_field :password_confirmation, autocomplete: "off",class:'form-control required',placeholder:"Confirm Password" %>
+    </div>
+</div>
+<div class=row>
+    <div class="form-group">
+        <h4>
+            <lable for="select"> <%= t('labels.for')%>
+                <i>*</i>
+            </lable>
+            </h2>
+            <%= profile.select(:member_relationship, Relationship.all.collect {|p| [p.name , p.name]}, { include_blank: true },class:"form-control required") %>
+    </div>
+</div>
+<div class=row>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input required" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1"><%= t('labels.conditions') %>)
+        </label>
+    </div>
+</div>
+
+<input type="button" name="next" class="next action-button" value="Next" />
+<div class=row>
+    <div class="form-group">
+        <hr>
+        <h3>
+            <a class="login-model"><%=t('labels.member') %></a>
+        </h3>
+    </div>
+</div>

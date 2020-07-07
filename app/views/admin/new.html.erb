@@ -1,0 +1,288 @@
+<%= form_for(@user, url: '/admin') do |f| %>
+  <div class="field">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :email %>
+          <span class="error" style="color: #de5454;">*</span>
+          <br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" , :required => true,class: "form-control"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :password %>
+          <span class="error" style="color: #de5454;">*</span>
+          <% if @minimum_password_length %>
+            <em>(
+              <%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+              <br />
+              <%= f.password_field :password, autocomplete: "off" , :required => true,class: "form-control"%>
+      </div>
+    </div>
+    <div class="field row font-small">
+            <div class="col-md-4" style="margin-left: 0px;">
+                <span id="8char" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 8 Characters<br>
+                <span id="ucase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 1 Uppercase<br>
+                <span id="scase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 1 Specialcharacter
+            </div>
+            <div class="col-md-4" style="margin-left: 0px;">
+                <span id="lcase" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 1 Lowercase<br>
+                <span id="num" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> 1 Number and 
+            </div>
+        </div>
+  </div>
+
+  <div class="field">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :password_confirmation %>
+          <span class="error" style="color: #de5454;">*</span>
+          <br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", :required => true,class: "form-control" %>
+      </div>
+    </div>
+     <div class="row font-small">
+            <div class="col-sm-4">
+            <span id="pwmatch" class="glyphicon glyphicon-remove" style="color:#FF0004;"></span> Passwords Match
+            </div>
+        </div>
+  </div>
+
+<div class="field">
+   <div class="row">
+     <div class="col-md-6">
+       <%= f.label :FirstName %>
+       <span class="error" style="color: #de5454;">*</span></span><br />
+       <%= f.text_field :first_name , :required => true,class: "form-control"%>
+     </div>
+   </div>
+ </div>
+
+<div class="field">
+   <div class="row">
+     <div class="col-md-6">
+       <%= f.label :LastName %>
+       <span class="error" style="color: #de5454;">*</span></span><br />
+       <%= f.text_field :last_name , :required => true,class: "form-control"%>
+     </div>
+   </div>
+ </div>
+
+
+  <div class="form-group row">
+        <div class="col-md-6">
+           
+            <%= f.label :dob %>
+             <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <%= f.text_field :dob, id: :profile_dob,class: "form-control" %>
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+           
+    </div>
+
+<div class="field">
+   <div class="row">
+     <div class="col-md-6">
+       <%= f.label :region %>
+       <span class="error" style="color: #de5454;">*</span>
+       <%= f.select(:region, Region.all.collect {|p| [ p.name, p.name ] }, { include_blank: true,  required: true },class:"form-control") %>
+     </div>
+   </div>
+ </div>
+
+ <div class="actions">
+  <input type="button" name="commit" value="Create Account" class="btn btn-sm btn-primary" onclick="validateRegionalSignupForm()" data-disable-with="Create Account">
+ 
+</div>
+
+<% end %>
+</div>
+
+
+
+<script>
+ $(function () {
+     
+     $('#datetimepicker1').datetimepicker({
+                
+                   format: 'DD/MM/YYYY'
+                });
+              
+            });
+    $("#user_email").blur(function(){
+        
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var email = this.value;
+        var check = email.match(pattern);
+        $('.user_email_error').remove(); 
+        if (!check)
+        {
+            $('.user_email_error').remove(); 
+           // $(this).focus(); 
+            if(email == "")
+            {
+                $(this).before( '<p class="user_email_error error">Enter Correct Email Address.</p>' );
+            }
+            else{
+            $(this).before( '<p class="user_email_error error">Enter Correct Email Address.</p>' );
+            }
+        }
+        else{
+            $('.user_email_error').remove(); 
+        }
+    });
+    $('#user_email').on('input', function(){
+       var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var email = this.value;
+        var check = email.match(pattern);
+        $('.user_email_error').remove(); 
+        if (!check)
+        {
+            $('.user_email_error').remove(); 
+           // $(this).focus(); 
+            if(email == "")
+            {
+                $(this).before( '<p class="user_email_error error">Enter Correct Email Address.</p>' );
+            }
+            else{
+            $(this).before( '<p class="user_email_error error">Enter Correct Email Address.</p>' );
+            }
+        }
+        else{
+            $('.user_email_error').remove(); 
+        }
+    });
+
+
+    $("#user_first_name").on('input', function(){
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var user_firstname = this.value;
+        $('.user_firstname_error').remove(); 
+        if(user_firstname.length < 3)
+        {
+            $(this).before( '<p class="user_firstname_error error">First Name is Required.</p>' );
+            //$(this).focus();
+        }
+            
+    });
+
+    $("#user_last_name").on('input', function(){
+        var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+        var user_lastname = this.value;
+        $('.user_lastname_error').remove(); 
+        if(user_lastname.length < 3)
+        {
+            $(this).before( '<p class="user_lastname_error error">Last Name is Required.</p>' );
+            //$(this).focus();
+        }
+            
+    });
+
+    
+    
+//  $( "#user_dob" ).datepicker({
+
+//      dateFormat: "dd/mm/yy"
+//  });
+
+
+ $("input[type=password]").keyup(function(){
+    var ucase = new RegExp("[A-Z]+");
+	var lcase = new RegExp("[a-z]+");
+	var num = new RegExp("[0-9]+");
+	var snum = new RegExp("<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-=");
+	$(".font-small").css("display","block");
+	if($("#user_password").val().length >= 8){
+		$("#8char").removeClass("glyphicon-remove");
+		$("#8char").addClass("glyphicon-ok");
+		$("#8char").css("color","#00A41E");
+	}else{
+		$("#8char").removeClass("glyphicon-ok");
+		$("#8char").addClass("glyphicon-remove");
+		$("#8char").css("color","#FF0004");
+	}
+	
+	if(ucase.test($("#user_password").val())){
+		$("#ucase").removeClass("glyphicon-remove");
+		$("#ucase").addClass("glyphicon-ok");
+		$("#ucase").css("color","#00A41E");
+	}else{
+		$("#ucase").removeClass("glyphicon-ok");
+		$("#ucase").addClass("glyphicon-remove");
+		$("#ucase").css("color","#FF0004");
+	}
+	
+	if(lcase.test($("#user_password").val())){
+		$("#lcase").removeClass("glyphicon-remove");
+		$("#lcase").addClass("glyphicon-ok");
+		$("#lcase").css("color","#00A41E");
+	}else{
+		$("#lcase").removeClass("glyphicon-ok");
+		$("#lcase").addClass("glyphicon-remove");
+		$("#lcase").css("color","#FF0004");
+	}
+	
+	if(num.test($("#user_password").val())){
+		$("#num").removeClass("glyphicon-remove");
+		$("#num").addClass("glyphicon-ok");
+		$("#num").css("color","#00A41E");
+	}else{
+		$("#num").removeClass("glyphicon-ok");
+		$("#num").addClass("glyphicon-remove");
+		$("#num").css("color","#FF0004");
+    }
+    
+    if(check($('#user_password').val()) == true){
+		$("#scase").removeClass("glyphicon-remove");
+		$("#scase").addClass("glyphicon-ok");
+		$("#scase").css("color","#00A41E");
+	}else{
+		$("#scase").removeClass("glyphicon-ok");
+		$("#scase").addClass("glyphicon-remove");
+		$("#scase").css("color","#FF0004");
+	}
+	
+	if($("#user_password").val() == $("#user_password_confirmation").val()){
+		$("#pwmatch").removeClass("glyphicon-remove");
+		$("#pwmatch").addClass("glyphicon-ok");
+		$("#pwmatch").css("color","#00A41E");
+	}else{
+		$("#pwmatch").removeClass("glyphicon-ok");
+		$("#pwmatch").addClass("glyphicon-remove");
+		$("#pwmatch").css("color","#FF0004");
+    }
+    
+    if($("#user_password_confirmation").val().length > 0 && ($("#user_password").val() == $("#user_password_confirmation").val())){
+		$("#pwmatch").removeClass("glyphicon-remove");
+		$("#pwmatch").addClass("glyphicon-ok");
+		$("#pwmatch").css("color","#00A41E");
+	}else{
+		$("#pwmatch").removeClass("glyphicon-ok");
+		$("#pwmatch").addClass("glyphicon-remove");
+		$("#pwmatch").css("color","#FF0004");
+	}
+});
+
+
+
+var specialChars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-="
+var check = function(string){
+    for(i = 0; i < specialChars.length;i++){
+        if(string.indexOf(specialChars[i]) > -1){
+            return true
+        }
+    }
+    return false;
+}
+
+    </script>

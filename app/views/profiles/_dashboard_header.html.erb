@@ -1,0 +1,28 @@
+<ul class="breadcrumb">
+<%if !current_user.admin.nil?%>
+<li><a href="/admin/portal_members"><%= current_user.admin=="GBL" ? 'Portal Members' : 'My Assignments' %></a></li>
+<%else%>
+<li><a href="#"><%= current_user.admin=="GBL" ? 'My Portal' : 'My Profile' %></a></li>
+<%end%>
+<li><%= profile.user.first_name %> Profile</li>
+</ul>
+
+<br>
+<%if !current_user.admin.nil?%>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#"><%= profile.user.first_name %> Profile</a>
+    </li>
+    <li role="presentation" >
+      <a href="#">Activity</a>
+    </li>
+    
+  </ul>
+<br>
+
+
+
+<h2>Status:  <%=profile.profile_state%></h2>
+<%else%>
+<h2>  My Profile</h2>
+<%end%>
